@@ -3386,7 +3386,7 @@ const controls = {
     shaders: 'lambert',
     shape: 'cube',
     color: [80, 40, 1, 0.9],
-    tesselations: 5,
+    tesselations: 6,
     'Load Scene': loadScene // A function pointer, essentially
 };
 let icosphere;
@@ -15408,6 +15408,7 @@ class ShaderProgram {
         this.unifViewProj = __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].getUniformLocation(this.prog, "u_ViewProj");
         this.unifColor = __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].getUniformLocation(this.prog, "u_Color");
         this.unifTime = __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].getUniformLocation(this.prog, "u_Time");
+        //this.unifResolution = gl.getUniformLocation(this.prog, "u_Resolution");
     }
     use() {
         if (activeProgram !== this.prog) {

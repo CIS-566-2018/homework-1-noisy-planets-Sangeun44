@@ -1,5 +1,30 @@
 # CIS 566 Project 1: Noisy Planets
 
+- Your name and PennKey
+  Sangeun Lee
+  eunsang
+
+- Citation of any external resources you found helpful when implementing this
+assignment.
+
+- [IQ's heart making] 
+(https://www.youtube.com/watch?v=aNR4n0i2ZlM)
+- [Implicit Procedural Planet Generation](https://static1.squarespace.com/static/58a1bc3c3e00be6bfe6c228c/t/58a4d25146c3c4233fb15cc2/1487196929690/ImplicitProceduralPlanetGeneration-Report.pdf)
+- [Curl Noise](https://petewerner.blogspot.com/2015/02/intro-to-curl-noise.html)
+- [GPU Gems Chapter on Perlin Noise](http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch05.html)
+- [Worley Noise Implementations](https://thebookofshaders.com/12/)
+
+
+- A link to your live github.io demo (we'll talk about how to get this set up
+in class some time before the assignment is due)
+
+- At least one screenshot of your planet
+
+- An explanation of the techniques you used to generate your planet features.
+Please be as detailed as you can; not only will this help you explain your work
+to recruiters, but it helps us understand your project when we grade it!
+
+
 ## Objective
 - Continue practicing WebGL and Typescript
 - Experiment with noise functions to procedurally generate the surface of a planet
@@ -58,15 +83,6 @@ Commit and push to Github, then submit a link to your commit on Canvas.
 
 For this assignment, and for all future assignments, modify this README file
 so that it contains the following information:
-- Your name and PennKey
-- Citation of any external resources you found helpful when implementing this
-assignment.
-- A link to your live github.io demo (we'll talk about how to get this set up
-in class some time before the assignment is due)
-- At least one screenshot of your planet
-- An explanation of the techniques you used to generate your planet features.
-Please be as detailed as you can; not only will this help you explain your work
-to recruiters, but it helps us understand your project when we grade it!
 
 ## Extra Credit
 - Use a 4D noise function to modify the terrain over time, where time is the
@@ -76,3 +92,4 @@ the change in noise will look more "directional" than if you use 4D.
   brightness of emissive areas, water levels, etc.)
 - Create a background for your planet using a raytraced sky box that includes
 things like the sun, stars, or even nebulae.
+

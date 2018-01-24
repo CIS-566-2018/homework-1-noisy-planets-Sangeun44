@@ -7,6 +7,9 @@
 //This simultaneous transformation allows your program to run much faster, especially when rendering
 //geometry with millions of vertices.
 
+
+uniform float u_Time; 
+
 uniform mat4 u_Model;       // The matrix that defines the transformation of the
                             // object we're rendering. In this assignment,
                             // this will be the result of traversing your scene graph.
@@ -28,110 +31,52 @@ in vec4 vs_Col;             // The array of vertex colors passed to the shader.
 out vec4 fs_Nor;            // The array of normals that has been transformed by u_ModelInvTr. This is implicitly passed to the fragment shader.
 out vec4 fs_LightVec;       // The direction in which our virtual light lies, relative to each vertex. This is implicitly passed to the fragment shader.
 out vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.
+out vec4 fs_Pos;
 
 const vec4 lightPos = vec4(5, 5, 3, 1); //The position of our virtual light, which is used to compute the shading of
                                         //the geometry in the fragment shader.
-// beat value, 0->1, 1->0
-float beat(float x) {
-	float temp = x-1.0;
-	temp *= temp;
-	temp *= temp;
-	return temp*(cos(30.0*x)*.5+.5);
+
+
+float random (in vec2 st) {
+    return fract(sin(dot(st.xy,
+                         vec2(12.9898,78.233)))*
+        43758.5453123);
 }
 
-// point to background color value
-vec3 backgroundColor(vec2 p) {
-	vec3 color = vec3(.3, .05, .2);
-	
-	// add a star
-	float t = atan(p.y, p.x) / PI;
-	t *= 5.0;
-	t += iTime*0.5;
-	t = abs(fract(t)*2.0-1.0);
-	float star = smoothstep(0.5, 0.6, t);
-	color = mix(color, vec3(0.5, 0.2, 0.4), star);
-	
-	// add some flowers
-	p.y+=3.3;
-	p *= 0.2;
-	for (float i = 0.0 ; i < 5.5 ; i++) {
-		vec2 pp = p;
-		pp *= rot(.05*sin(2.0*iTime+2.0*PI*rand(vec2(i,1.0))));
-		pp.x += iTime*(rand(vec2(i,2.0))*2.0-1.0)*(i+3.0)*.12;
-		pp.y += sin(iTime+2.0*PI*rand(vec2(i,3.0)))*.1;
-		vec4 flowerValue = flower(pp, 5.0+floor(i*.5), i);
-		p.y += 0.02;
-		p /= 0.9;
-		
-		vec3 flowerColor = vec3(rand(vec2(i, 19.0))*1.0,
-								rand(vec2(i, 18.0))*0.2,
-								rand(vec2(i, 16.0))*0.8);
-		
-		flowerValue.rgb = flowerColor*flowerValue.rgb*3.0+flowerValue.rgb;
-		color = mix(color, flowerValue.rgb, flowerValue.a);
-	}
-	
-	return color;
+float snoise (in vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+
+    // Four corners in 2D of a tile
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+
+    vec2 u = f * f * (3.0 - 2.0 * f);
+
+    return mix(a, b, u.x) +
+            (c - a)* u.y * (1.0 - u.x) +
+            (d - b) * u.x * u.y;
 }
 
-// point to heart value
-float heartFormula(vec2 p, bool time) {
-	// heartbeat
-	if (time) {
-		float beatValue = beat(fract(0.824*iTime))*0.1;
-		p.x *= 1.0 + beatValue * 2.0;
-		p.y *= 1.0 - beatValue * 1.5;
-	}
-	// center the heart around the axis
-	p.y -= 1.6;
-	// see http://mathworld.wolfram.com/HeartCurve.html
-	float t = atan(p.y, p.x);
-	float si = sin(t);
-	float r = 2.0 - 2.0 * si + si * (sqrt(abs(cos(t))) / (si + 1.4));
-	return length(p)-r;
-}
+float fbm (in vec2 st) {
+    // Initial values
+    float value = 0.0;
+    float amplitude = .5;
+    float frequency = 0.;
 
-// heart value to heart color with alpha
-vec4 heartColor(vec2 p) {
-	float v = heartFormula(p, true);
-	vec3 color = vec3(1.0, 0.5, 0.8);
-	color -= smoothstep(-0.8, +0.5, v)*vec3(0.6);
-	color += smoothstep(-0.0, -1.6, v)*vec3(.4);
-	color -= smoothstep(-0.2, +0.2, v)*vec3(0.1);
-	return vec4(color, smoothstep(0.2, 0.1, v));
+    // Loop of octaves
+    for (int i = 0; i < 15; i++) {
+        value += amplitude * abs(snoise(st));
+        st *= 2.;
+        amplitude *= .5;
+    }
+    return value;
 }
-
-// opening
-float opening(vec2 p) {
-	float mult = max(0.0, 5.0-iTime*1.5);
-	p *= 3.0*mult*mult*mult;
-	p *= rot(sin(iTime*6.0)*.2);
-	float v = heartFormula(p, false);
-	return smoothstep(-0.5, 0.5, v);
-}
-
 void main()
 {
-    vec2 uv = gl_Position.xy / vec2(640,480) * 2.0 - 1.0;
-	uv.x *= 640 / 480;
-	float mult = 3.0+4.0 * beat(min(1.0, 0.09* u_Time));
-	uv *= mult;
-	
-	// get background
-	vec3 color = backgroundColor(uv);
-	// heart formula and color
-	vec4 hcolor = heartColor(uv*mult*.32);
-	// and blend with heart color
-	color = mix(color, hcolor.rgb, hcolor.a);
-	color = clamp(color, 0.0, 1.0);
-	// set opening
-	color -= opening(uv);
-	
-	fragColor.rgb = color;
-	fragColor.a = 1.0;
-
     fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation
-
     mat3 invTranspose = mat3(u_ModelInvTr);
     fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);          // Pass the vertex normals to the fragment shader for interpolation.
                                                             // Transform the geometry's normals by the inverse transpose of the
@@ -139,14 +84,32 @@ void main()
                                                             // perpendicular to the surface after the surface is transformed by
                                                             // the model matrix.
 
+    float x = vs_Pos.x ;
+    float y = vs_Pos.y ;
+    float z = vs_Pos.z ;
+    float w = vs_Pos.w;
 
-    vec4 modelposition = u_Model * vs_Pos;   // Temporarily store the transformed vertex positions for use below
+    float x2 = x;
+    float y2 = y;
+    float z2 = z;
+
+    y2 = 0.9 * (1.0 * y + (abs(x) * sqrt((20.0 + abs(x))/10.0)));
+
+    if(z > 0.9) {
+         z2 = z - (y / 2.0);
+    }
+    else if(z > 0.3) {
+        z2 = z - (y / 4.0);
+    }
+    else {
+         z2 = z + (y / 15.0);
+    }
+    vec4 change_Pos = vec4(x2, y2, z2, w);
+
+    vec4 modelposition = u_Model * change_Pos;   // Temporarily store the transformed vertex positions for use below
 
     fs_LightVec = lightPos - modelposition;  // Compute the direction in which the light source lies
-
+    fs_Pos = modelposition;
     gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is
                                              // used to render the final positions of the geometry's vertices
-
-                                             	
-
 }

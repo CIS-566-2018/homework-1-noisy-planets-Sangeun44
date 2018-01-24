@@ -13,10 +13,10 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 // Define an object with application parameters and button callbacks
 // This will be referred to by dat.GUI's functions that add GUI elements.
 const controls = {
-  shaders: 'lambert',
-  shape: 'cube',
+  shaders: 'heart-planet',
+  shape: 'icosphere',
   color: [80, 40, 1, 0.9], // CSS string
-  tesselations: 5,
+  tesselations: 6,
   'Load Scene': loadScene // A function pointer, essentially
 };
 
@@ -46,10 +46,10 @@ function main() {
   // Add controls to the gui
   const gui = new DAT.GUI();
   gui.addColor(controls, 'color');
-  gui.add(controls, 'shaders', ['lambert', 'vertex']);
+  gui.add(controls, 'shaders', ['lambert', 'heart-planet']);
   gui.add(controls, 'tesselations', 0, 8).step(1);
   gui.add(controls, 'Load Scene');
-  gui.add(controls, 'shape', ['cube', 'square', 'icosphere']);
+  gui.add(controls, 'shape', ['cube', 'icosphere']);
 
   // get canvas and webgl context
   const canvas = <HTMLCanvasElement> document.getElementById('canvas');
@@ -80,6 +80,17 @@ function main() {
     new Shader(gl.FRAGMENT_SHADER, require('./shaders/lambert-frag.glsl')),
   ]);
 
+  const butterfly = new ShaderProgram([
+    new Shader(gl.VERTEX_SHADER, require('./shaders/butterfly-vert.glsl')),
+    new Shader(gl.FRAGMENT_SHADER, require('./shaders/butterfly-frag.glsl')),
+  ]);
+
+  const planet = new ShaderProgram([
+    new Shader(gl.VERTEX_SHADER, require('./shaders/planet-vert.glsl')),
+    new Shader(gl.FRAGMENT_SHADER, require('./shaders/planet-frag.glsl')),
+  ]);
+
+
   // This function will be called every frame
   function tick() {
     let new_color = vec4.fromValues(controls.color[0]/256, controls.color[1]/256, controls.color[2]/256, 1);
@@ -95,19 +106,15 @@ function main() {
       renderer.clear();
       if(controls.shape === 'cube') {
         renderer.render(camera, lambert, [cube]);
-      }
-      else if(controls.shape === 'square') {
-        renderer.render(camera, lambert, [square]);
-      }
-      else if(controls.shape === 'icosphere') {
+      } else if(controls.shape === 'icosphere') {
         renderer.render(camera, lambert, [icosphere]);
       }
     }
 
-    else if (controls.shaders === 'vertex') {
-      vertex.setGeometryColor(new_color);  
+    else if (controls.shaders === 'heart-planet') {
+      planet.setGeometryColor(new_color);  
       count += 1;
-      vertex.setTime(count);
+      planet.setTime(count);
       camera.update();  
       stats.begin();
   
@@ -115,16 +122,12 @@ function main() {
   
       renderer.clear();
       if(controls.shape === 'cube') {
-        renderer.render(camera, vertex, [cube]);
-      }
-      else if(controls.shape === 'square') {
-        renderer.render(camera, vertex, [square]);
+        renderer.render(camera, planet, [cube]);
       }
       else if(controls.shape === 'icosphere') {
-        renderer.render(camera, vertex, [icosphere]);
+        renderer.render(camera, planet, [icosphere]);
       }
     }
-
 
     stats.end();
 
