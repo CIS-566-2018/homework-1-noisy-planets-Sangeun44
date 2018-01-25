@@ -1,6 +1,6 @@
 # CIS 566 Project 1: Noisy Planets
 
-- Your name and PennKey
+- Name and PennKey
   Sangeun Lee
   eunsang
 
@@ -23,6 +23,11 @@ in class some time before the assignment is due)
 - An explanation of the techniques you used to generate your planet features.
 Please be as detailed as you can; not only will this help you explain your work
 to recruiters, but it helps us understand your project when we grade it!
+
+Planet -
+
+Bunnies
+  Perlin Noise
 
 
 ## Objective

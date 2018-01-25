@@ -26,9 +26,7 @@ out vec4 out_Col; // This is the final output color that you will see on your
 
 
 float random (in vec2 st) {
-    return fract(sin(dot(st.xy,
-                         vec2(12.9898,78.233)))*
-        43758.5453123);
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
 }
 
 float snoise (in vec2 st) {
@@ -72,20 +70,16 @@ void main()
         // Avoid negative lighting values
         // diffuseTerm = clamp(diffuseTerm, 0, 1);
 
-        float ambientTerm = 0.2;
+        float ambientTerm = 0.7;
 
         float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier
                                                             //to simulate ambient lighting. This ensures that faces that are not
                                                             //lit by our point light are not completely black.
-      float fbm = fbm(vec2(fs_Pos.x, fs_Pos.y));
+    float fbm = fbm(vec2(fs_Pos.x, fs_Pos.y));
 
-        vec3 a = vec3(0.5 * cos(u_Time*.01), 0.5, 0.5);
-        vec3 b = vec3(0.5, 0.5* cos(u_Time*.01), 0.5);
-        vec3 c = vec3(1.0, 1.0, 1.0);
-        vec3 d = vec3(0.0, 0.33*cos(u_Time*.01), 0.67);
-        vec4 color = vec4(a + b  * cos(u_Time * 0.01 * fbm * 2.f * 3.14159 * (c * diffuseTerm + d)), 1);
+    diffuseColor = vec4(255.0/256.0, 182.0/256.0, 193.0/256.0, 1.0);
 
-    vec4 col = vec4(color.rgb * lightIntensity, diffuseColor.a);
+    vec4 col = vec4(diffuseColor.rgb * 1.2 * lightIntensity, diffuseColor.a);
 
     out_Col = col;
 

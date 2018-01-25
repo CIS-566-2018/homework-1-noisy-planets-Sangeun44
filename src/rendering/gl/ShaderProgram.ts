@@ -30,9 +30,11 @@ class ShaderProgram {
   unifViewProj: WebGLUniformLocation;
   unifColor: WebGLUniformLocation;
   unifTime: WebGLUniformLocation;
+  unifLength: WebGLUniformLocation;
 
   curr_color: vec4;
   time: number;
+  length: number;
 
   constructor(shaders: Array<Shader>) {
     this.prog = gl.createProgram();
@@ -53,7 +55,7 @@ class ShaderProgram {
     this.unifViewProj   = gl.getUniformLocation(this.prog, "u_ViewProj");
     this.unifColor      = gl.getUniformLocation(this.prog, "u_Color");
     this.unifTime       = gl.getUniformLocation(this.prog, "u_Time");
-
+    this.unifLength     = gl.getUniformLocation(this.prog, "u_Length")
   }
 
   use() {
@@ -92,6 +94,14 @@ class ShaderProgram {
     this.time = t;
 }
 
+setDressLength(t: number) {
+  this.use();
+  if (this.unifLength !== -1) {
+    gl.uniform1f(this.unifLength, this.length);
+  }
+  this.length = t;
+}
+
   setGeometryColor(color: vec4) {
     this.use();
     if (this.unifColor !== -1) {
@@ -99,6 +109,8 @@ class ShaderProgram {
     }
     this.curr_color = color;
   }
+
+
 
   draw(d: Drawable) {
     this.use();

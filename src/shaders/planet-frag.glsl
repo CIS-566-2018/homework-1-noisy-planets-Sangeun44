@@ -111,14 +111,16 @@ void main()
     float y1 = fs_Pos.y;
     float z1 = fs_Pos.z;
 
-    vec2 uv = fs_Pos.xy;
+    vec3 uv = fs_Pos.xyz;
 
     vec4 color = u_Color;
     float dist = dist(vec3(x1, y1 + 2.0, z1 - 1.0), vec3(0.0, 2.0, 0.0));
     
+    float snoise = snoise(vec3(snoise(uv), snoise(uv), snoise(uv)));
+
     //create a mineral core
     if(dist < 0.35) {
-        vec3 a = vec3(0.5,0.5,0.5);
+        vec3 a = vec3(1.0, 0.82, 0.863);
         vec3 b = vec3(0.5,0.5,0.5);
         vec3 c = vec3(1.0,1.0,0.5);
         vec3 d = vec3(0.80,0.20,0.20);

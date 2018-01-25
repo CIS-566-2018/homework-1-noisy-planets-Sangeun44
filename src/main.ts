@@ -14,21 +14,26 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 // This will be referred to by dat.GUI's functions that add GUI elements.
 const controls = {
   color: [80, 40, 1, 0.9], // CSS string
-  'Load Scene': loadScene // A function pointer, essentially
+  'Load Scene': loadScene, // A function pointer, essentially
+  Pink : 0.0,
+  Blue : 0.0,
 };
 
 let heart: Icosphere;
-let moon: Icosphere;
+let blackBunny: Icosphere;
+let whiteBunny: Icosphere;
 let mount: Icosphere;
 let count: number = 0.0;
 
 function loadScene() {
-  heart = new Icosphere(vec3.fromValues(0, 1, 0), 2, 6);
+  heart = new Icosphere(vec3.fromValues(0, 1, 0), 4, 6);
   heart.create();
-  mount = new Icosphere(vec3.fromValues(0, 1, 0), 2, 6);
+  mount = new Icosphere(vec3.fromValues(0, 1, 0), 4, 6);
   mount.create();
-  moon = new Icosphere(vec3.fromValues(0, 0, 0), 1, 6);
-  moon.create();
+  blackBunny = new Icosphere(vec3.fromValues(0, 0, 0), 1, 6);
+  blackBunny.create();
+  whiteBunny = new Icosphere(vec3.fromValues(0, 0, 0), 1, 6);
+  whiteBunny.create();
 }
 
 function main() {
@@ -44,6 +49,8 @@ function main() {
   const gui = new DAT.GUI();
   gui.addColor(controls, 'color');
   gui.add(controls, 'Load Scene');
+  gui.add(controls,'Pink' , 0, 2).step(0.2);
+  gui.add(controls, 'Blue', 0, 2).step(0.2);
 
   // get canvas and webgl context
   const canvas = <HTMLCanvasElement> document.getElementById('canvas');
@@ -61,7 +68,7 @@ function main() {
   const camera = new Camera(vec3.fromValues(0, 0, 15), vec3.fromValues(0, 0, 0));
 
   const renderer = new OpenGLRenderer(canvas);
-  renderer.setClearColor(0.2, 0.2, 0.2, 1);
+  renderer.setClearColor(1.0, 0.82, 0.863, 1);
   gl.enable(gl.DEPTH_TEST);
 
   const planet = new ShaderProgram([
@@ -72,9 +79,13 @@ function main() {
     new Shader(gl.VERTEX_SHADER, require('./shaders/mountains-vert.glsl')),
     new Shader(gl.FRAGMENT_SHADER, require('./shaders/mountains-frag.glsl')),
   ]);
-  const bunny = new ShaderProgram([
-    new Shader(gl.VERTEX_SHADER, require('./shaders/bunny-vert.glsl')),
-    new Shader(gl.FRAGMENT_SHADER, require('./shaders/bunny-frag.glsl')),
+  const bunny_black = new ShaderProgram([
+    new Shader(gl.VERTEX_SHADER, require('./shaders/bunny_black-vert.glsl')),
+    new Shader(gl.FRAGMENT_SHADER, require('./shaders/bunny_black-frag.glsl')),
+  ]);
+  const bunny_white = new ShaderProgram([
+    new Shader(gl.VERTEX_SHADER, require('./shaders/bunny_white-vert.glsl')),
+    new Shader(gl.FRAGMENT_SHADER, require('./shaders/bunny_white-frag.glsl')),
   ]);
 
   // const butterfly = new ShaderProgram([
@@ -87,13 +98,18 @@ function main() {
     let new_color = vec4.fromValues(controls.color[0]/256, controls.color[1]/256, controls.color[2]/256, 1);
       planet.setGeometryColor(new_color);  
       mountains.setGeometryColor(new_color);
-      bunny.setGeometryColor(new_color);
-      
+      bunny_black.setGeometryColor(new_color);
+      bunny_white.setGeometryColor(new_color);
+
+      bunny_black.setDressLength(controls.Blue);
+      bunny_white.setDressLength(controls.Pink);
+
       count += 1;
       planet.setTime(count);
       mountains.setTime(count);
-      bunny.setTime(count);
-      
+      bunny_black.setTime(count);
+      bunny_white.setTime(count);
+
       camera.update();  
       stats.begin();
   
@@ -102,7 +118,8 @@ function main() {
       renderer.clear();
       renderer.render(camera, planet, [heart]);
       //renderer.render(camera, mountains, [mount]);
-      renderer.render(camera, bunny, [moon]);
+      renderer.render(camera, bunny_white, [whiteBunny]);
+      renderer.render(camera, bunny_black, [blackBunny]);
 
     stats.end();
 
