@@ -13,25 +13,22 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 // Define an object with application parameters and button callbacks
 // This will be referred to by dat.GUI's functions that add GUI elements.
 const controls = {
-  shaders: 'heart-planet',
-  shape: 'icosphere',
   color: [80, 40, 1, 0.9], // CSS string
-  tesselations: 6,
   'Load Scene': loadScene // A function pointer, essentially
 };
 
-let icosphere: Icosphere;
-let square: Square;
-let cube: Cube;
+let heart: Icosphere;
+let moon: Icosphere;
+let mount: Icosphere;
 let count: number = 0.0;
 
 function loadScene() {
-  icosphere = new Icosphere(vec3.fromValues(0, 0, 0), 1, controls.tesselations);
-  icosphere.create();
-  square = new Square(vec3.fromValues(0, 0, 0));
-  square.create();
-  cube = new Cube(vec3.fromValues(0, 0, 0));
-  cube.create();
+  heart = new Icosphere(vec3.fromValues(0, 1, 0), 2, 6);
+  heart.create();
+  mount = new Icosphere(vec3.fromValues(0, 1, 0), 2, 6);
+  mount.create();
+  moon = new Icosphere(vec3.fromValues(0, 0, 0), 1, 6);
+  moon.create();
 }
 
 function main() {
@@ -46,10 +43,7 @@ function main() {
   // Add controls to the gui
   const gui = new DAT.GUI();
   gui.addColor(controls, 'color');
-  gui.add(controls, 'shaders', ['lambert', 'heart-planet']);
-  gui.add(controls, 'tesselations', 0, 8).step(1);
   gui.add(controls, 'Load Scene');
-  gui.add(controls, 'shape', ['cube', 'icosphere']);
 
   // get canvas and webgl context
   const canvas = <HTMLCanvasElement> document.getElementById('canvas');
@@ -64,70 +58,51 @@ function main() {
   // Initial call to load scene
   loadScene();
 
-  const camera = new Camera(vec3.fromValues(0, 0, 5), vec3.fromValues(0, 0, 0));
+  const camera = new Camera(vec3.fromValues(0, 0, 15), vec3.fromValues(0, 0, 0));
 
   const renderer = new OpenGLRenderer(canvas);
   renderer.setClearColor(0.2, 0.2, 0.2, 1);
   gl.enable(gl.DEPTH_TEST);
 
-  const vertex = new ShaderProgram([
-    new Shader(gl.VERTEX_SHADER, require('./shaders/vertex-vert.glsl')),
-    new Shader(gl.FRAGMENT_SHADER, require('./shaders/vertex-frag.glsl')),
-  ]);
-
-  const lambert = new ShaderProgram([
-    new Shader(gl.VERTEX_SHADER, require('./shaders/lambert-vert.glsl')),
-    new Shader(gl.FRAGMENT_SHADER, require('./shaders/lambert-frag.glsl')),
-  ]);
-
-  const butterfly = new ShaderProgram([
-    new Shader(gl.VERTEX_SHADER, require('./shaders/butterfly-vert.glsl')),
-    new Shader(gl.FRAGMENT_SHADER, require('./shaders/butterfly-frag.glsl')),
-  ]);
-
   const planet = new ShaderProgram([
     new Shader(gl.VERTEX_SHADER, require('./shaders/planet-vert.glsl')),
     new Shader(gl.FRAGMENT_SHADER, require('./shaders/planet-frag.glsl')),
   ]);
+  const mountains = new ShaderProgram([
+    new Shader(gl.VERTEX_SHADER, require('./shaders/mountains-vert.glsl')),
+    new Shader(gl.FRAGMENT_SHADER, require('./shaders/mountains-frag.glsl')),
+  ]);
+  const bunny = new ShaderProgram([
+    new Shader(gl.VERTEX_SHADER, require('./shaders/bunny-vert.glsl')),
+    new Shader(gl.FRAGMENT_SHADER, require('./shaders/bunny-frag.glsl')),
+  ]);
 
+  // const butterfly = new ShaderProgram([
+  //   new Shader(gl.VERTEX_SHADER, require('./shaders/butterfly-vert.glsl')),
+  //   new Shader(gl.FRAGMENT_SHADER, require('./shaders/butterfly-frag.glsl')),
+  // ]);
 
   // This function will be called every frame
   function tick() {
     let new_color = vec4.fromValues(controls.color[0]/256, controls.color[1]/256, controls.color[2]/256, 1);
-    
-    if(controls.shaders === 'lambert') {
-      lambert.setGeometryColor(new_color);  
-      
-      camera.update();
-      stats.begin();
-  
-      gl.viewport(0, 0, window.innerWidth, window.innerHeight);
-  
-      renderer.clear();
-      if(controls.shape === 'cube') {
-        renderer.render(camera, lambert, [cube]);
-      } else if(controls.shape === 'icosphere') {
-        renderer.render(camera, lambert, [icosphere]);
-      }
-    }
-
-    else if (controls.shaders === 'heart-planet') {
       planet.setGeometryColor(new_color);  
+      mountains.setGeometryColor(new_color);
+      bunny.setGeometryColor(new_color);
+      
       count += 1;
       planet.setTime(count);
+      mountains.setTime(count);
+      bunny.setTime(count);
+      
       camera.update();  
       stats.begin();
   
       gl.viewport(0, 0, window.innerWidth, window.innerHeight);
   
       renderer.clear();
-      if(controls.shape === 'cube') {
-        renderer.render(camera, planet, [cube]);
-      }
-      else if(controls.shape === 'icosphere') {
-        renderer.render(camera, planet, [icosphere]);
-      }
-    }
+      renderer.render(camera, planet, [heart]);
+      //renderer.render(camera, mountains, [mount]);
+      renderer.render(camera, bunny, [moon]);
 
     stats.end();
 

@@ -33,54 +33,38 @@ out vec4 fs_LightVec;       // The direction in which our virtual light lies, re
 out vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.
 out vec4 fs_Pos;
 
-const vec4 lightPos = vec4(0, 0, 10, 1); //The position of our virtual light, which is used to compute the shading of
+const vec4 lightPos = vec4(5, 5, 3, 1); //The position of our virtual light, which is used to compute the shading of
                                         //the geometry in the fragment shader.
 
-float dist (vec3 x, vec3 y) {
-    return pow((x.x - y.x), 2.0) + pow((x.y - y.y), 2.0) + pow((x.z - y.z), 2.0);
-}
-
-
-mat4 rotationMatrix(vec3 axis, float angle)
-{
-    axis = normalize(axis);
-    float s = sin(angle);
-    float c = cos(angle);
-    float oc = 1.0 - c;
-    
-    return mat4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,
-                oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,
-                oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,
-                0.0,                                0.0,                                0.0,                                1.0);
-}
 
 void main()
 {
     fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation
     mat3 invTranspose = mat3(u_ModelInvTr);
-    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);
+    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);          // Pass the vertex normals to the fragment shader for interpolation.
+                                                            // Transform the geometry's normals by the inverse transpose of the
+                                                            // model matrix. This is necessary to ensure the normals remain
+                                                            // perpendicular to the surface after the surface is transformed by
+                                                            // the model matrix.
 
-    vec3 xyz = vec3(vs_Pos.xyz) * sin(u_Time * 0.1);
-
-    //heart
-    float x = vs_Pos.x;
-    float y = vs_Pos.y;
-    float z = vs_Pos.z;
+    float x = vs_Pos.x ;
+    float y = vs_Pos.y ;
+    float z = vs_Pos.z ;
     float w = vs_Pos.w;
 
     float x2 = x;
     float y2 = y;
     float z2 = z;
 
-    float tune = 0.7 + pow(sin ( 0.09 * u_Time + y / 25.0), 4.0);
+    if(y > 0.9) {
+        y2 = 0.9 * (1.0 * y + (abs(x) * sqrt((20.0 + abs(x))/10.0)));
+    }
 
-    //heart shape
-    y2 = (0.9 * y + (abs(x) * sqrt(20.0 + abs(x))/8.0));
-    z2 = z * (0.4 +  y2/4.0);
+    if(y2 < 0.9 && y2 > 0.0) {
+        z2 = z - (1.0 * y);
+    }
 
-    float dist = dist(vec3(x2, y2, z2), vec3(0.0, 1.0, 0.0));
-
-    vec4 change_Pos = vec4(x2, y2, z2, w);
+    vec4 change_Pos = vec4(0.2, 0.2, 0.2, 0.2) * vec4(x2 + 5.0, y2, -z2, w);
 
     vec4 modelposition = u_Model * change_Pos;   // Temporarily store the transformed vertex positions for use below
 
@@ -88,5 +72,4 @@ void main()
     fs_Pos = modelposition;
     gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is
                                              // used to render the final positions of the geometry's vertices
-
 }
