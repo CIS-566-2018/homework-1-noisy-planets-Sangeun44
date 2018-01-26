@@ -122,12 +122,13 @@ void main()
     float y2 = y;
     float z2 = z;
 
-    float tune = 0.7 + pow(sin ( 0.09 * u_Time + y / 25.0), 4.0);
+    float tune = pow(sin(u_Time * 0.05 + y / 25.0), 4.0);
 
     //heart shape
     y2 = (0.9 * y + (abs(x) * sqrt(20.0 + abs(x))/8.0));
     z2 = z * (0.4 +  y2/9.0);
-  
+    //z2 *= tune * 0.2;
+
     vec3 uv = vec3(x2, y2, z2);
     float e = snoise(uv) * 0.3;
     vec3 noise = vec3(e, e, e);

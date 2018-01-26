@@ -137,6 +137,8 @@ void main()
 
     //diffuseColor = vec4(color.rgb * lightIntensity + SpecularIntensity, 1.0);
 
+    float x = sin(u_Time * 0.1);
+
     if(diffuseTerm > 0.99){
         color = diffuseColor * vec4(1.0, 1.0, 1.0, 1.0);
     } else if(diffuseTerm > 0.95){

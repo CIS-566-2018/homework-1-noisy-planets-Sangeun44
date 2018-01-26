@@ -13,6 +13,7 @@ precision highp float;
 
 uniform vec4 u_Color; // The color with which to render this instance of geometry.
 uniform float u_Time;
+uniform float u_Length;
 
 // These are the interpolated values out of the rasterizer, so you can't know
 // their specific values without knowing the vertices that contributed to them
@@ -130,7 +131,9 @@ void main()
     vec2 uv = fs_Pos.xy;
 
     float dist = dist(vec3(x1, y1 + 2.0, z1 - 1.0), vec3(0.0, 2.0, 0.0));
-    
+            
+  vec4 color = vec4( diffuseTerm );
+
     // //create a mineral core
     // if(dist > 0.) {
     //     vec3 a = vec3(0.5,0.5,0.5);
@@ -142,22 +145,23 @@ void main()
     
     diffuseColor = vec4(diffuseColor.rgb * lightIntensity + SpecularIntensity, 1.0);
 
-    // if(diffuseTerm > 0.99){
-    //     color = colorIn * vec4(1.0, 1.0, 1.0, 1.0);
-    // } else if(diffuseTerm > 0.9){
-    //     color = colorIn * vec4(0.95, 0.95, 0.95, 1.0);
-    // } else if(diffuseTerm > 0.85){
-    //     color = colorIn * vec4(0.93, 0.93, 0.93, 1.0);
-    // } else if(diffuseTerm > 0.8){
-    //     color = colorIn * vec4(0.8, 0.8, 0.8, 1.0);
-    // } else if(diffuseTerm > 0.75){
-    //     color = colorIn * vec4(0.7, 0.7, 0.7, 1.0);
-    // } else if(diffuseTerm > 0.7){
-    //     color = colorIn * vec4(0.6, 0.6, 0.6, 1.0);
-    // } else{
-    //     color = colorIn * vec4(1.0, 0.9, 0.9, 1.0);
-    // }
-     out_Col = diffuseColor;
+    float x = sin(u_Time * 0.1);
+    if(x > 0.99){
+        color = diffuseColor * vec4(1.0, 1.0, 1.0, 1.0);
+    } else if(x > 0.9){
+        color = diffuseColor * vec4(0.95, 0.95, 0.95, 1.0);
+    } else if(x > 0.85){
+        color = diffuseColor * vec4(0.93, 0.93, 0.93, 1.0);
+    } else if(x > 0.8){
+        color = diffuseColor * vec4(0.8, 0.8, 0.8, 1.0);
+    } else if(x > 0.75){
+        color = diffuseColor * vec4(0.7, 0.7, 0.7, 1.0);
+    } else if(x > 0.7){
+        color = diffuseColor * vec4(0.6, 0.6, 0.6, 1.0);
+    } else{
+        color = diffuseColor * vec4(1.0, 0.9, 0.9, 1.0);
+    }
+     out_Col = color;
 
 }
 

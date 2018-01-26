@@ -114,7 +114,7 @@ function main() {
       bunny_black.setLength(controls.Blue);
       bunny_white.setLength(controls.Pink);
       mountains.setLength(controls.Self_defense);
- 
+      
       count += 1;
       planet.setTime(count);
       mountains.setTime(count);
