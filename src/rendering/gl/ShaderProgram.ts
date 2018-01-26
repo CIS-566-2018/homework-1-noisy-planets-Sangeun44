@@ -94,7 +94,7 @@ class ShaderProgram {
     this.time = t;
 }
 
-setDressLength(t: number) {
+setLength(t: number) {
   this.use();
   if (this.unifLength !== -1) {
     gl.uniform1f(this.unifLength, this.length);

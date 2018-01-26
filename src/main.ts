@@ -13,16 +13,19 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 // Define an object with application parameters and button callbacks
 // This will be referred to by dat.GUI's functions that add GUI elements.
 const controls = {
-  color: [80, 40, 1, 0.9], // CSS string
+  color: [255, 105, 193, 0.9], // CSS string
   'Load Scene': loadScene, // A function pointer, essentially
-  Pink : 0.0,
-  Blue : 0.0,
+  Pink : 0.2,
+  Blue : 0.2,
+  Self_defense: 0.2,
 };
 
 let heart: Icosphere;
 let blackBunny: Icosphere;
 let whiteBunny: Icosphere;
 let mount: Icosphere;
+let skyDome: Icosphere;
+
 let count: number = 0.0;
 
 function loadScene() {
@@ -34,6 +37,8 @@ function loadScene() {
   blackBunny.create();
   whiteBunny = new Icosphere(vec3.fromValues(0, 0, 0), 1, 6);
   whiteBunny.create();
+  skyDome = new Icosphere(vec3.fromValues(0, 0, 0), 40, 3);
+  skyDome.create();
 }
 
 function main() {
@@ -51,6 +56,7 @@ function main() {
   gui.add(controls, 'Load Scene');
   gui.add(controls,'Pink' , 0, 2).step(0.2);
   gui.add(controls, 'Blue', 0, 2).step(0.2);
+  gui.add(controls, 'Self_defense', 0, 2).step(0.2);
 
   // get canvas and webgl context
   const canvas = <HTMLCanvasElement> document.getElementById('canvas');
@@ -65,7 +71,7 @@ function main() {
   // Initial call to load scene
   loadScene();
 
-  const camera = new Camera(vec3.fromValues(0, 0, 15), vec3.fromValues(0, 0, 0));
+  const camera = new Camera(vec3.fromValues(0, 0, 20), vec3.fromValues(0, 0, 0));
 
   const renderer = new OpenGLRenderer(canvas);
   renderer.setClearColor(1.0, 0.82, 0.863, 1);
@@ -74,6 +80,10 @@ function main() {
   const planet = new ShaderProgram([
     new Shader(gl.VERTEX_SHADER, require('./shaders/planet-vert.glsl')),
     new Shader(gl.FRAGMENT_SHADER, require('./shaders/planet-frag.glsl')),
+  ]);
+  const sky = new ShaderProgram([
+    new Shader(gl.VERTEX_SHADER, require('./shaders/sky-vert.glsl')),
+    new Shader(gl.FRAGMENT_SHADER, require('./shaders/sky-frag.glsl')),
   ]);
   const mountains = new ShaderProgram([
     new Shader(gl.VERTEX_SHADER, require('./shaders/mountains-vert.glsl')),
@@ -101,9 +111,10 @@ function main() {
       bunny_black.setGeometryColor(new_color);
       bunny_white.setGeometryColor(new_color);
 
-      bunny_black.setDressLength(controls.Blue);
-      bunny_white.setDressLength(controls.Pink);
-
+      bunny_black.setLength(controls.Blue);
+      bunny_white.setLength(controls.Pink);
+      mountains.setLength(controls.Self_defense);
+ 
       count += 1;
       planet.setTime(count);
       mountains.setTime(count);
@@ -117,7 +128,8 @@ function main() {
   
       renderer.clear();
       renderer.render(camera, planet, [heart]);
-      //renderer.render(camera, mountains, [mount]);
+      renderer.render(camera, sky, [skyDome]);
+      renderer.render(camera, mountains, [mount]);
       renderer.render(camera, bunny_white, [whiteBunny]);
       renderer.render(camera, bunny_black, [blackBunny]);
 

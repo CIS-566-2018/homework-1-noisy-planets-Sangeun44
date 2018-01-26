@@ -4,11 +4,9 @@
   Sangeun Lee
   eunsang
 
-- Citation of any external resources you found helpful when implementing this
-assignment.
-
-- [IQ's heart making] 
-(https://www.youtube.com/watch?v=aNR4n0i2ZlM)
+- Citation of external resources 
+-[Noise functions](https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83)
+- [IQ's heart making](https://www.youtube.com/watch?v=aNR4n0i2ZlM)
 - [Implicit Procedural Planet Generation](https://static1.squarespace.com/static/58a1bc3c3e00be6bfe6c228c/t/58a4d25146c3c4233fb15cc2/1487196929690/ImplicitProceduralPlanetGeneration-Report.pdf)
 - [Curl Noise](https://petewerner.blogspot.com/2015/02/intro-to-curl-noise.html)
 - [GPU Gems Chapter on Perlin Noise](http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch05.html)

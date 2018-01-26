@@ -101,12 +101,11 @@ void main()
         // Calculate the diffuse term for Lambert shading
         float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec + vec4(sin(u_Time * 0.1))));
 
-        float ambientTerm = 0.2;
+        float ambientTerm = 0.7;
 
         float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier
                                                             //to simulate ambient lighting. This ensures that faces that are not
                                                             //lit by our point light are not completely black.
-
     float x1 = fs_Pos.x;
     float y1 = fs_Pos.y;
     float z1 = fs_Pos.z;
@@ -126,40 +125,33 @@ void main()
         vec3 d = vec3(0.80,0.20,0.20);
         vec3 color = vec3(a + b * cos(2.0 * 3.14159 * (c * diffuseTerm + d)));
     }
-    else {
-
-    }
     
     vec4 view_vec = fs_Pos * vec4(2.0, 2.0 , 8.0, 1.0);
     vec4 light_vec = fs_LightVec;
     vec4 average = normalize((view_vec + light_vec) / 2.0);
     vec4 normal = normalize(fs_Nor);
+
     float exp = 50.0;
+    
     float SpecularIntensity = max(pow(dot(average, normal), exp), 0.0);
 
-    diffuseColor = vec4(color.rgb * lightIntensity + SpecularIntensity, 1.0);
-
-    vec4 colorIn = diffuseColor;
-
-    if(diffuseColor.r > 0.9 && diffuseColor.g > 0.9 && diffuseColor.b> 0.9){
-        colorIn.r = 1.0;
-        colorIn.g = 1.0;
-        colorIn.b = 1.0;
-    }
+    //diffuseColor = vec4(color.rgb * lightIntensity + SpecularIntensity, 1.0);
 
     if(diffuseTerm > 0.99){
-        color = colorIn * vec4(1.0, 1.0, 1.0, 1.0);
-    }
-    else if(diffuseTerm > 0.85){
-        color = colorIn * vec4(0.9, 0.9, 0.9, 1.0);
-    }
-    else if(diffuseTerm > 0.5){
-        color = colorIn * vec4(0.7, 0.7, 0.7, 1.0);
-    }
-    else{
-        color = colorIn * vec4(0.1, 0.1, 0.1, 1.0);
+        color = diffuseColor * vec4(1.0, 1.0, 1.0, 1.0);
+    } else if(diffuseTerm > 0.95){
+        color = diffuseColor * vec4(0.95, 0.95, 0.95, 1.0);
+    } else if(diffuseTerm > 0.90){
+        color = diffuseColor * vec4(0.93, 0.93, 0.93, 1.0);
+    } else if(diffuseTerm > 0.85){
+        color = diffuseColor * vec4(0.8, 0.8, 0.8, 1.0);
+    } else if(diffuseTerm > 0.75){
+        color = diffuseColor * vec4(0.7, 0.7, 0.7, 1.0);
+    } else if(diffuseTerm > 0.7){
+        color = diffuseColor * vec4(0.6, 0.6, 0.6, 1.0);
+    } else{
+        color = diffuseColor * vec4(1.0, 0.9, 0.9, 1.0);
     }
 
     out_Col = vec4(color.rgb, 1.0);
-
 }
