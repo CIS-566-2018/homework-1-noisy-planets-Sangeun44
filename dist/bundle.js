@@ -3321,8 +3321,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const controls = {
     color: [255, 105, 193, 0.9],
     'Load Scene': loadScene,
-    Pink: 0.2,
-    Blue: 0.2,
+    Pink_Bunny: 0.2,
+    Blue_Bunny: 0.2,
     Self_defense: 0.2,
 };
 let heart;
@@ -3355,8 +3355,8 @@ function main() {
     const gui = new __WEBPACK_IMPORTED_MODULE_2_dat_gui__["GUI"]();
     gui.addColor(controls, 'color');
     gui.add(controls, 'Load Scene');
-    gui.add(controls, 'Pink', 0, 2).step(0.2);
-    gui.add(controls, 'Blue', 0, 2).step(0.2);
+    gui.add(controls, 'Pink_Bunny', 0, 2).step(0.2);
+    gui.add(controls, 'Blue_Bunny', 0, 2).step(0.2);
     gui.add(controls, 'Self_defense', 0, 2).step(0.2);
     // get canvas and webgl context
     const canvas = document.getElementById('canvas');
@@ -3404,8 +3404,8 @@ function main() {
         mountains.setGeometryColor(new_color);
         bunny_black.setGeometryColor(new_color);
         bunny_white.setGeometryColor(new_color);
-        bunny_black.setLength(controls.Blue);
-        bunny_white.setLength(controls.Pink);
+        bunny_black.setLength(controls.Blue_Bunny);
+        bunny_white.setLength(controls.Pink_Bunny);
         mountains.setLength(controls.Self_defense);
         count += 1;
         planet.setTime(count);
