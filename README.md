@@ -13,7 +13,7 @@
 - [Worley Noise Implementations](https://thebookofshaders.com/12/)
 
 - A link to your live github.io demo 
-http://sangeun44.github.io/homework-1-noisy-planets-Sangeun44
+  https://sangeun44.github.io/Heart/
 - Screenshot of the planet
 ![](heart.png)
 
@@ -22,19 +22,22 @@ Please be as detailed as you can; not only will this help you explain your work
 to recruiters, but it helps us understand your project when we grade it!
 
 Mountains
-  -Work with recursive Perlin noise to create spikes
+  -Worked with recursive 3D Simplex noise to create spikes
   -Modifiable spikes from dat.GUI
+  -Pulses on a sin curve to look like a heart pulse
 
 Planet 
-  -Work with recursive Perlin noise
-  -Work with 
+  -Heart shaped planet created with parabolic curves
+  -Fragment shaded with Toon Shader creating a pulsing core
 
 Bunnies
   -Shaped with parabolic curves
+  -The bunnies were given dresses created from 3D simplex noise
   -Simplex Noise dresses
   
 Sky
-  -Perlin Noise recursion
+  -created from a sphere
+  -Perlin Noise recursion on a sphere with inverted vertex normals
 
 ## Objective
 - Continue practicing WebGL and Typescript
