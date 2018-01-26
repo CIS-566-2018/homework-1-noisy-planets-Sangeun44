@@ -22,7 +22,13 @@
 Please be as detailed as you can; not only will this help you explain your work
 to recruiters, but it helps us understand your project when we grade it!
 
-Planet -
+Mountains
+  Work with recursive Perlin noise to create spikes
+  Modifiable spikes from dat.GUI
+
+Planet 
+  Work with recursive Perlin noise
+  work with 
 
 Bunnies
   Perlin Noise

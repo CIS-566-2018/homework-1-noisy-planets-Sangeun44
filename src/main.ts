@@ -15,8 +15,8 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 const controls = {
   color: [255, 105, 193, 0.9], // CSS string
   'Load Scene': loadScene, // A function pointer, essentially
-  Pink : 0.2,
-  Blue : 0.2,
+  Pink_Bunny : 0.2,
+  Blue_Bunny : 0.2,
   Self_defense: 0.2,
 };
 
@@ -54,8 +54,8 @@ function main() {
   const gui = new DAT.GUI();
   gui.addColor(controls, 'color');
   gui.add(controls, 'Load Scene');
-  gui.add(controls,'Pink' , 0, 2).step(0.2);
-  gui.add(controls, 'Blue', 0, 2).step(0.2);
+  gui.add(controls,'Pink_Bunny' , 0, 2).step(0.2);
+  gui.add(controls, 'Blue_Bunny', 0, 2).step(0.2);
   gui.add(controls, 'Self_defense', 0, 2).step(0.2);
 
   // get canvas and webgl context
@@ -111,8 +111,8 @@ function main() {
       bunny_black.setGeometryColor(new_color);
       bunny_white.setGeometryColor(new_color);
 
-      bunny_black.setLength(controls.Blue);
-      bunny_white.setLength(controls.Pink);
+      bunny_black.setLength(controls.Blue_Bunny);
+      bunny_white.setLength(controls.Pink_Bunny);
       mountains.setLength(controls.Self_defense);
       
       count += 1;

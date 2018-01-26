@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -146,14 +146,14 @@ function equals(a, b) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(7);
 /* unused harmony reexport glMatrix */
 /* unused harmony reexport mat2 */
 /* unused harmony reexport mat2d */
@@ -278,66 +278,6 @@ function invert(out, a) {
 
 /***/ }),
 /* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__globals__ = __webpack_require__(2);
-
-class Drawable {
-    constructor() {
-        this.count = 0;
-        this.idxBound = false;
-        this.posBound = false;
-        this.norBound = false;
-    }
-    destory() {
-        __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].deleteBuffer(this.bufIdx);
-        __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].deleteBuffer(this.bufPos);
-        __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].deleteBuffer(this.bufNor);
-    }
-    generateIdx() {
-        this.idxBound = true;
-        this.bufIdx = __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].createBuffer();
-    }
-    generatePos() {
-        this.posBound = true;
-        this.bufPos = __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].createBuffer();
-    }
-    generateNor() {
-        this.norBound = true;
-        this.bufNor = __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].createBuffer();
-    }
-    bindIdx() {
-        if (this.idxBound) {
-            __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].ELEMENT_ARRAY_BUFFER, this.bufIdx);
-        }
-        return this.idxBound;
-    }
-    bindPos() {
-        if (this.posBound) {
-            __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].ARRAY_BUFFER, this.bufPos);
-        }
-        return this.posBound;
-    }
-    bindNor() {
-        if (this.norBound) {
-            __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].ARRAY_BUFFER, this.bufNor);
-        }
-        return this.norBound;
-    }
-    elemCount() {
-        return this.count;
-    }
-    drawMode() {
-        return __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].TRIANGLES;
-    }
-}
-;
-/* harmony default export */ __webpack_exports__["a"] = (Drawable);
-
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = normalize;
@@ -365,7 +305,7 @@ function normalize(out, a) {
 }
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1172,7 +1112,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2012,7 +1952,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2674,7 +2614,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2682,8 +2622,8 @@ const forEach = (function() {
 
 module.exports = createFilteredVector
 
-var cubicHermite = __webpack_require__(39)
-var bsearch = __webpack_require__(10)
+var cubicHermite = __webpack_require__(37)
+var bsearch = __webpack_require__(9)
 
 function clamp(lo, hi, x) {
   return Math.min(hi, Math.max(lo, x))
@@ -2972,7 +2912,7 @@ function createFilteredVector(initState, initVelocity, initTime) {
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3039,7 +2979,7 @@ module.exports = {
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = cross;
@@ -3063,7 +3003,7 @@ function cross(out, a, b) {
 }
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = dot;
@@ -3080,10 +3020,10 @@ function dot(a, b) {
 }
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(14);
+var identity = __webpack_require__(13);
 
 module.exports = lookAt;
 
@@ -3175,7 +3115,7 @@ function lookAt(out, eye, center, up) {
 };
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = identity;
@@ -3207,7 +3147,7 @@ function identity(out) {
 };
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = translate;
@@ -3250,7 +3190,7 @@ function translate(out, a, v) {
 };
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = create;
@@ -3282,7 +3222,7 @@ function create() {
 };
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = scale;
@@ -3318,7 +3258,7 @@ function scale(out, a, v) {
 };
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = determinant;
@@ -3353,25 +3293,21 @@ function determinant(a) {
 };
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_gl_matrix__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stats_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stats_js__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stats_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_stats_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_dat_gui__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_dat_gui__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_dat_gui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_dat_gui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__geometry_Icosphere__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__geometry_Square__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__geometry_Cube__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__rendering_gl_OpenGLRenderer__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Camera__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__globals__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__rendering_gl_ShaderProgram__ = __webpack_require__(66);
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__geometry_Icosphere__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rendering_gl_OpenGLRenderer__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Camera__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__globals__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__ = __webpack_require__(64);
 
 
 
@@ -3383,23 +3319,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // Define an object with application parameters and button callbacks
 // This will be referred to by dat.GUI's functions that add GUI elements.
 const controls = {
-    shaders: 'lambert',
-    shape: 'cube',
-    color: [80, 40, 1, 0.9],
-    tesselations: 6,
-    'Load Scene': loadScene // A function pointer, essentially
+    color: [255, 105, 193, 0.9],
+    'Load Scene': loadScene,
+    Pink: 0.2,
+    Blue: 0.2,
+    Self_defense: 0.2,
 };
-let icosphere;
-let square;
-let cube;
+let heart;
+let blackBunny;
+let whiteBunny;
+let mount;
+let skyDome;
 let count = 0.0;
 function loadScene() {
-    icosphere = new __WEBPACK_IMPORTED_MODULE_3__geometry_Icosphere__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 0), 1, controls.tesselations);
-    icosphere.create();
-    square = new __WEBPACK_IMPORTED_MODULE_4__geometry_Square__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 0));
-    square.create();
-    cube = new __WEBPACK_IMPORTED_MODULE_5__geometry_Cube__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 0));
-    cube.create();
+    heart = new __WEBPACK_IMPORTED_MODULE_3__geometry_Icosphere__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 1, 0), 4, 6);
+    heart.create();
+    mount = new __WEBPACK_IMPORTED_MODULE_3__geometry_Icosphere__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 1, 0), 4, 6);
+    mount.create();
+    blackBunny = new __WEBPACK_IMPORTED_MODULE_3__geometry_Icosphere__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 0), 1, 6);
+    blackBunny.create();
+    whiteBunny = new __WEBPACK_IMPORTED_MODULE_3__geometry_Icosphere__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 0), 1, 6);
+    whiteBunny.create();
+    skyDome = new __WEBPACK_IMPORTED_MODULE_3__geometry_Icosphere__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 0), 40, 3);
+    skyDome.create();
 }
 function main() {
     // Initial display for framerate
@@ -3412,10 +3354,10 @@ function main() {
     // Add controls to the gui
     const gui = new __WEBPACK_IMPORTED_MODULE_2_dat_gui__["GUI"]();
     gui.addColor(controls, 'color');
-    gui.add(controls, 'shaders', ['lambert', 'vertex']);
-    gui.add(controls, 'tesselations', 0, 8).step(1);
     gui.add(controls, 'Load Scene');
-    gui.add(controls, 'shape', ['cube', 'square', 'icosphere']);
+    gui.add(controls, 'Pink', 0, 2).step(0.2);
+    gui.add(controls, 'Blue', 0, 2).step(0.2);
+    gui.add(controls, 'Self_defense', 0, 2).step(0.2);
     // get canvas and webgl context
     const canvas = document.getElementById('canvas');
     const gl = canvas.getContext('webgl2');
@@ -3424,58 +3366,61 @@ function main() {
     }
     // `setGL` is a function imported above which sets the value of `gl` in the `globals.ts` module.
     // Later, we can import `gl` from `globals.ts` to access it
-    Object(__WEBPACK_IMPORTED_MODULE_8__globals__["b" /* setGL */])(gl);
+    Object(__WEBPACK_IMPORTED_MODULE_6__globals__["b" /* setGL */])(gl);
     // Initial call to load scene
     loadScene();
-    const camera = new __WEBPACK_IMPORTED_MODULE_7__Camera__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 5), __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 0));
-    const renderer = new __WEBPACK_IMPORTED_MODULE_6__rendering_gl_OpenGLRenderer__["a" /* default */](canvas);
-    renderer.setClearColor(0.2, 0.2, 0.2, 1);
+    const camera = new __WEBPACK_IMPORTED_MODULE_5__Camera__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 20), __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["b" /* vec3 */].fromValues(0, 0, 0));
+    const renderer = new __WEBPACK_IMPORTED_MODULE_4__rendering_gl_OpenGLRenderer__["a" /* default */](canvas);
+    renderer.setClearColor(1.0, 0.82, 0.863, 1);
     gl.enable(gl.DEPTH_TEST);
-    const vertex = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_ShaderProgram__["b" /* default */]([
-        new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(67)),
-        new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(68)),
+    const planet = new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["b" /* default */]([
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(65)),
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(66)),
     ]);
-    const lambert = new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_ShaderProgram__["b" /* default */]([
-        new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(69)),
-        new __WEBPACK_IMPORTED_MODULE_9__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(70)),
+    const sky = new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["b" /* default */]([
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(67)),
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(68)),
     ]);
+    const mountains = new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["b" /* default */]([
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(69)),
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(70)),
+    ]);
+    const bunny_black = new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["b" /* default */]([
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(71)),
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(72)),
+    ]);
+    const bunny_white = new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["b" /* default */]([
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.VERTEX_SHADER, __webpack_require__(73)),
+        new __WEBPACK_IMPORTED_MODULE_7__rendering_gl_ShaderProgram__["a" /* Shader */](gl.FRAGMENT_SHADER, __webpack_require__(74)),
+    ]);
+    // const butterfly = new ShaderProgram([
+    //   new Shader(gl.VERTEX_SHADER, require('./shaders/butterfly-vert.glsl')),
+    //   new Shader(gl.FRAGMENT_SHADER, require('./shaders/butterfly-frag.glsl')),
+    // ]);
     // This function will be called every frame
     function tick() {
         let new_color = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["c" /* vec4 */].fromValues(controls.color[0] / 256, controls.color[1] / 256, controls.color[2] / 256, 1);
-        if (controls.shaders === 'lambert') {
-            lambert.setGeometryColor(new_color);
-            camera.update();
-            stats.begin();
-            gl.viewport(0, 0, window.innerWidth, window.innerHeight);
-            renderer.clear();
-            if (controls.shape === 'cube') {
-                renderer.render(camera, lambert, [cube]);
-            }
-            else if (controls.shape === 'square') {
-                renderer.render(camera, lambert, [square]);
-            }
-            else if (controls.shape === 'icosphere') {
-                renderer.render(camera, lambert, [icosphere]);
-            }
-        }
-        else if (controls.shaders === 'vertex') {
-            vertex.setGeometryColor(new_color);
-            count += 1;
-            vertex.setTime(count);
-            camera.update();
-            stats.begin();
-            gl.viewport(0, 0, window.innerWidth, window.innerHeight);
-            renderer.clear();
-            if (controls.shape === 'cube') {
-                renderer.render(camera, vertex, [cube]);
-            }
-            else if (controls.shape === 'square') {
-                renderer.render(camera, vertex, [square]);
-            }
-            else if (controls.shape === 'icosphere') {
-                renderer.render(camera, vertex, [icosphere]);
-            }
-        }
+        planet.setGeometryColor(new_color);
+        mountains.setGeometryColor(new_color);
+        bunny_black.setGeometryColor(new_color);
+        bunny_white.setGeometryColor(new_color);
+        bunny_black.setLength(controls.Blue);
+        bunny_white.setLength(controls.Pink);
+        mountains.setLength(controls.Self_defense);
+        count += 1;
+        planet.setTime(count);
+        mountains.setTime(count);
+        bunny_black.setTime(count);
+        bunny_white.setTime(count);
+        camera.update();
+        stats.begin();
+        gl.viewport(0, 0, window.innerWidth, window.innerHeight);
+        renderer.clear();
+        renderer.render(camera, planet, [heart]);
+        renderer.render(camera, sky, [skyDome]);
+        renderer.render(camera, mountains, [mount]);
+        renderer.render(camera, bunny_white, [whiteBunny]);
+        renderer.render(camera, bunny_black, [blackBunny]);
         stats.end();
         // Tell the browser to call `tick` again whenever it renders a new frame
         requestAnimationFrame(tick);
@@ -3495,7 +3440,7 @@ main();
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3964,7 +3909,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4465,7 +4410,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6203,7 +6148,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6223,9 +6168,9 @@ const sub = subtract;
 /* unused harmony export fromEuler */
 /* unused harmony export str */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(7);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -6893,7 +6838,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7535,7 +7480,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports) {
 
 // stats.js - http://github.com/mrdoob/stats.js
@@ -7547,14 +7492,14 @@ a+"px",m=b,r=0);return b},update:function(){l=this.end()}}};"object"===typeof mo
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(27)
-module.exports.color = __webpack_require__(28)
+module.exports = __webpack_require__(26)
+module.exports.color = __webpack_require__(27)
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports) {
 
 /**
@@ -11219,7 +11164,7 @@ dat.dom.dom,
 dat.utils.common);
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /**
@@ -11979,12 +11924,12 @@ dat.color.toString,
 dat.utils.common);
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_gl_matrix__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globals__ = __webpack_require__(2);
 
 
@@ -12137,149 +12082,67 @@ class Icosphere extends __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__["a"
 
 
 /***/ }),
+/* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__globals__ = __webpack_require__(2);
+
+class Drawable {
+    constructor() {
+        this.count = 0;
+        this.idxBound = false;
+        this.posBound = false;
+        this.norBound = false;
+    }
+    destory() {
+        __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].deleteBuffer(this.bufIdx);
+        __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].deleteBuffer(this.bufPos);
+        __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].deleteBuffer(this.bufNor);
+    }
+    generateIdx() {
+        this.idxBound = true;
+        this.bufIdx = __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].createBuffer();
+    }
+    generatePos() {
+        this.posBound = true;
+        this.bufPos = __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].createBuffer();
+    }
+    generateNor() {
+        this.norBound = true;
+        this.bufNor = __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].createBuffer();
+    }
+    bindIdx() {
+        if (this.idxBound) {
+            __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].ELEMENT_ARRAY_BUFFER, this.bufIdx);
+        }
+        return this.idxBound;
+    }
+    bindPos() {
+        if (this.posBound) {
+            __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].ARRAY_BUFFER, this.bufPos);
+        }
+        return this.posBound;
+    }
+    bindNor() {
+        if (this.norBound) {
+            __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].ARRAY_BUFFER, this.bufNor);
+        }
+        return this.norBound;
+    }
+    elemCount() {
+        return this.count;
+    }
+    drawMode() {
+        return __WEBPACK_IMPORTED_MODULE_0__globals__["a" /* gl */].TRIANGLES;
+    }
+}
+;
+/* harmony default export */ __webpack_exports__["a"] = (Drawable);
+
+
+/***/ }),
 /* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_gl_matrix__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globals__ = __webpack_require__(2);
-
-
-
-class Square extends __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__["a" /* default */] {
-    constructor(center) {
-        super(); // Call the constructor of the super class. This is required.
-        this.center = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["c" /* vec4 */].fromValues(center[0], center[1], center[2], 1);
-    }
-    create() {
-        this.indices = new Uint32Array([0, 1, 2,
-            0, 2, 3
-        ]);
-        this.normals = new Float32Array([0, 0, 1, 0,
-            0, 0, 1, 0,
-            0, 0, 1, 0,
-            0, 0, 1, 0,
-        ]);
-        this.positions = new Float32Array([-1, -1, 0, 1,
-            1, -1, 0, 1,
-            1, 1, 0, 1,
-            -1, 1, 0, 1,
-        ]);
-        this.generateIdx();
-        this.generatePos();
-        this.generateNor();
-        this.count = this.indices.length;
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ELEMENT_ARRAY_BUFFER, this.bufIdx);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bufferData(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ELEMENT_ARRAY_BUFFER, this.indices, __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].STATIC_DRAW);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ARRAY_BUFFER, this.bufNor);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bufferData(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ARRAY_BUFFER, this.normals, __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].STATIC_DRAW);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ARRAY_BUFFER, this.bufPos);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bufferData(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ARRAY_BUFFER, this.positions, __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].STATIC_DRAW);
-        console.log(`Created square`);
-    }
-}
-;
-/* harmony default export */ __webpack_exports__["a"] = (Square);
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_gl_matrix__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globals__ = __webpack_require__(2);
-
-
-
-class Cube extends __WEBPACK_IMPORTED_MODULE_1__rendering_gl_Drawable__["a" /* default */] {
-    constructor(center) {
-        super(); // Call the constructor of the super class. This is required.
-        this.center = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["c" /* vec4 */].fromValues(center[0], center[1], center[2], 1);
-    }
-    create() {
-        var myIndices = [];
-        var myPositions = [];
-        var myNormals = [];
-        //positions
-        //front/back
-        var num = 0;
-        var neg = 0.5;
-        while (num < 2) {
-            myPositions.push(-0.5, -0.5, neg, 1, 0.5, -0.5, neg, 1, 0.5, 0.5, neg, 1, -0.5, 0.5, neg, 1);
-            num++;
-            neg = -0.5;
-        }
-        //top//bottom
-        num = 0;
-        neg = 0.5;
-        while (num < 2) {
-            myPositions.push(-0.5, neg, 0.5, 1, 0.5, neg, 0.5, 1, 0.5, neg, -0.5, 1, -0.5, neg, -0.5, 1);
-            num++;
-            neg = -0.5;
-        }
-        //left/right
-        num = 0;
-        neg = 0.5;
-        while (num < 2) {
-            myPositions.push(neg, 0.5, 0.5, 1, neg, 0.5, -0.5, 1, neg, -0.5, -0.5, 1, neg, -0.5, 0.5, 1);
-            num++;
-            neg = -0.5;
-        }
-        this.positions = Float32Array.from(myPositions);
-        //normals
-        //front/back
-        num = 0;
-        neg = 1;
-        while (num < 2) {
-            for (let y = 0; y < 4; ++y) {
-                myNormals.push(0, 0, neg, 0);
-            }
-            for (let y = 0; y < 4; ++y) {
-                myNormals.push(0, neg, 0, 0);
-            }
-            for (let y = 0; y < 4; ++y) {
-                myNormals.push(neg, 0, 0, 0);
-            }
-            num++;
-            neg = -1;
-        }
-        this.normals = Float32Array.from(myNormals);
-        //indices  
-        this.indices = new Uint32Array([0, 1, 2,
-            0, 2, 3,
-            4, 6, 5,
-            4, 6, 7,
-            8, 9, 10,
-            8, 10, 11,
-            12, 13, 14,
-            12, 14, 15,
-            16, 17, 18,
-            16, 18, 19,
-            20, 21, 22,
-            20, 22, 23,
-        ]);
-        this.generateIdx();
-        this.generatePos();
-        this.generateNor();
-        this.count = this.indices.length;
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ELEMENT_ARRAY_BUFFER, this.bufIdx);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bufferData(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ELEMENT_ARRAY_BUFFER, this.indices, __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].STATIC_DRAW);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ARRAY_BUFFER, this.bufNor);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bufferData(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ARRAY_BUFFER, this.normals, __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].STATIC_DRAW);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bindBuffer(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ARRAY_BUFFER, this.bufPos);
-        __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].bufferData(__WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].ARRAY_BUFFER, this.positions, __WEBPACK_IMPORTED_MODULE_2__globals__["a" /* gl */].STATIC_DRAW);
-        console.log(`Created cube`);
-    }
-}
-;
-/* harmony default export */ __webpack_exports__["a"] = (Cube);
-
-
-/***/ }),
-/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12320,11 +12183,11 @@ class OpenGLRenderer {
 
 
 /***/ }),
-/* 33 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_3d_view_controls__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_3d_view_controls__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_3d_view_controls___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_3d_view_controls__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_gl_matrix__ = __webpack_require__(1);
 
@@ -12365,7 +12228,7 @@ class Camera {
 
 
 /***/ }),
-/* 34 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12373,11 +12236,11 @@ class Camera {
 
 module.exports = createCamera
 
-var now         = __webpack_require__(35)
-var createView  = __webpack_require__(37)
-var mouseChange = __webpack_require__(60)
-var mouseWheel  = __webpack_require__(62)
-var mouseOffset = __webpack_require__(65)
+var now         = __webpack_require__(33)
+var createView  = __webpack_require__(35)
+var mouseChange = __webpack_require__(58)
+var mouseWheel  = __webpack_require__(60)
+var mouseOffset = __webpack_require__(63)
 
 function createCamera(element, options) {
   element = element || document.body
@@ -12599,7 +12462,7 @@ function createCamera(element, options) {
 
 
 /***/ }),
-/* 35 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {module.exports =
@@ -12610,10 +12473,10 @@ function createCamera(element, options) {
     return +new Date
   }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
-/* 36 */
+/* 34 */
 /***/ (function(module, exports) {
 
 var g;
@@ -12640,7 +12503,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 37 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12648,9 +12511,9 @@ module.exports = g;
 
 module.exports = createViewController
 
-var createTurntable = __webpack_require__(38)
-var createOrbit     = __webpack_require__(41)
-var createMatrix    = __webpack_require__(44)
+var createTurntable = __webpack_require__(36)
+var createOrbit     = __webpack_require__(39)
+var createMatrix    = __webpack_require__(42)
 
 function ViewController(controllers, mode) {
   this._controllerNames = Object.keys(controllers)
@@ -12768,7 +12631,7 @@ function createViewController(options) {
 }
 
 /***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12776,12 +12639,12 @@ function createViewController(options) {
 
 module.exports = createTurntableController
 
-var filterVector = __webpack_require__(9)
+var filterVector = __webpack_require__(8)
 var invert44     = __webpack_require__(3)
-var rotateM      = __webpack_require__(40)
-var cross        = __webpack_require__(11)
-var normalize3   = __webpack_require__(5)
-var dot3         = __webpack_require__(12)
+var rotateM      = __webpack_require__(38)
+var cross        = __webpack_require__(10)
+var normalize3   = __webpack_require__(4)
+var dot3         = __webpack_require__(11)
 
 function len3(x, y, z) {
   return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2))
@@ -13346,7 +13209,7 @@ function createTurntableController(options) {
 }
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13391,7 +13254,7 @@ module.exports = cubicHermite
 module.exports.derivative = dcubicHermite
 
 /***/ }),
-/* 40 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = rotate;
@@ -13460,7 +13323,7 @@ function rotate(out, a, rad, axis) {
 };
 
 /***/ }),
-/* 41 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13468,11 +13331,11 @@ function rotate(out, a, rad, axis) {
 
 module.exports = createOrbitController
 
-var filterVector  = __webpack_require__(9)
-var lookAt        = __webpack_require__(13)
-var mat4FromQuat  = __webpack_require__(42)
+var filterVector  = __webpack_require__(8)
+var lookAt        = __webpack_require__(12)
+var mat4FromQuat  = __webpack_require__(40)
 var invert44      = __webpack_require__(3)
-var quatFromFrame = __webpack_require__(43)
+var quatFromFrame = __webpack_require__(41)
 
 function len3(x,y,z) {
   return Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2))
@@ -13859,7 +13722,7 @@ function createOrbitController(options) {
 }
 
 /***/ }),
-/* 42 */
+/* 40 */
 /***/ (function(module, exports) {
 
 module.exports = fromQuat;
@@ -13911,7 +13774,7 @@ function fromQuat(out, q) {
 };
 
 /***/ }),
-/* 43 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13958,22 +13821,22 @@ function quatFromFrame(
 }
 
 /***/ }),
-/* 44 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var bsearch   = __webpack_require__(10)
-var m4interp  = __webpack_require__(45)
+var bsearch   = __webpack_require__(9)
+var m4interp  = __webpack_require__(43)
 var invert44  = __webpack_require__(3)
-var rotateX   = __webpack_require__(57)
-var rotateY   = __webpack_require__(58)
-var rotateZ   = __webpack_require__(59)
-var lookAt    = __webpack_require__(13)
-var translate = __webpack_require__(15)
-var scale     = __webpack_require__(17)
-var normalize = __webpack_require__(5)
+var rotateX   = __webpack_require__(55)
+var rotateY   = __webpack_require__(56)
+var rotateZ   = __webpack_require__(57)
+var lookAt    = __webpack_require__(12)
+var translate = __webpack_require__(14)
+var scale     = __webpack_require__(16)
+var normalize = __webpack_require__(4)
 
 var DEFAULT_CENTER = [0,0,0]
 
@@ -14163,15 +14026,15 @@ function createMatrixCameraController(options) {
 
 
 /***/ }),
-/* 45 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var lerp = __webpack_require__(46)
+var lerp = __webpack_require__(44)
 
-var recompose = __webpack_require__(47)
-var decompose = __webpack_require__(50)
-var determinant = __webpack_require__(18)
-var slerp = __webpack_require__(55)
+var recompose = __webpack_require__(45)
+var decompose = __webpack_require__(48)
+var determinant = __webpack_require__(17)
+var slerp = __webpack_require__(53)
 
 var state0 = state()
 var state1 = state()
@@ -14220,7 +14083,7 @@ function vec4() {
 }
 
 /***/ }),
-/* 46 */
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = lerp;
@@ -14245,7 +14108,7 @@ function lerp(out, a, b, t) {
 }
 
 /***/ }),
-/* 47 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -14260,12 +14123,12 @@ From: http://www.w3.org/TR/css3-transforms/#recomposing-to-a-3d-matrix
 */
 
 var mat4 = {
-    identity: __webpack_require__(14),
-    translate: __webpack_require__(15),
-    multiply: __webpack_require__(48),
-    create: __webpack_require__(16),
-    scale: __webpack_require__(17),
-    fromRotationTranslation: __webpack_require__(49)
+    identity: __webpack_require__(13),
+    translate: __webpack_require__(14),
+    multiply: __webpack_require__(46),
+    create: __webpack_require__(15),
+    scale: __webpack_require__(16),
+    fromRotationTranslation: __webpack_require__(47)
 }
 
 var rotationMatrix = mat4.create()
@@ -14310,7 +14173,7 @@ module.exports = function recomposeMat4(matrix, translation, scale, skew, perspe
 }
 
 /***/ }),
-/* 48 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = multiply;
@@ -14357,7 +14220,7 @@ function multiply(out, a, b) {
 };
 
 /***/ }),
-/* 49 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = fromRotationTranslation;
@@ -14415,7 +14278,7 @@ function fromRotationTranslation(out, q, v) {
 };
 
 /***/ }),
-/* 50 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*jshint unused:true*/
@@ -14435,18 +14298,18 @@ https://github.com/ChromiumWebApps/chromium/blob/master/ui/gfx/transform_util.cc
 http://www.w3.org/TR/css3-transforms/#decomposing-a-3d-matrix
 */
 
-var normalize = __webpack_require__(51)
+var normalize = __webpack_require__(49)
 
-var create = __webpack_require__(16)
-var clone = __webpack_require__(52)
-var determinant = __webpack_require__(18)
+var create = __webpack_require__(15)
+var clone = __webpack_require__(50)
+var determinant = __webpack_require__(17)
 var invert = __webpack_require__(3)
-var transpose = __webpack_require__(53)
+var transpose = __webpack_require__(51)
 var vec3 = {
-    length: __webpack_require__(54),
-    normalize: __webpack_require__(5),
-    dot: __webpack_require__(12),
-    cross: __webpack_require__(11)
+    length: __webpack_require__(52),
+    normalize: __webpack_require__(4),
+    dot: __webpack_require__(11),
+    cross: __webpack_require__(10)
 }
 
 var tmp = create()
@@ -14599,7 +14462,7 @@ function combine(out, a, b, scale1, scale2) {
 }
 
 /***/ }),
-/* 51 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = function normalize(out, mat) {
@@ -14614,7 +14477,7 @@ module.exports = function normalize(out, mat) {
 }
 
 /***/ }),
-/* 52 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = clone;
@@ -14647,7 +14510,7 @@ function clone(a) {
 };
 
 /***/ }),
-/* 53 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = transpose;
@@ -14701,7 +14564,7 @@ function transpose(out, a) {
 };
 
 /***/ }),
-/* 54 */
+/* 52 */
 /***/ (function(module, exports) {
 
 module.exports = length;
@@ -14720,13 +14583,13 @@ function length(a) {
 }
 
 /***/ }),
-/* 55 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(56)
+module.exports = __webpack_require__(54)
 
 /***/ }),
-/* 56 */
+/* 54 */
 /***/ (function(module, exports) {
 
 module.exports = slerp
@@ -14783,7 +14646,7 @@ function slerp (out, a, b, t) {
 
 
 /***/ }),
-/* 57 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = rotateX;
@@ -14832,7 +14695,7 @@ function rotateX(out, a, rad) {
 };
 
 /***/ }),
-/* 58 */
+/* 56 */
 /***/ (function(module, exports) {
 
 module.exports = rotateY;
@@ -14881,7 +14744,7 @@ function rotateY(out, a, rad) {
 };
 
 /***/ }),
-/* 59 */
+/* 57 */
 /***/ (function(module, exports) {
 
 module.exports = rotateZ;
@@ -14930,7 +14793,7 @@ function rotateZ(out, a, rad) {
 };
 
 /***/ }),
-/* 60 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14938,7 +14801,7 @@ function rotateZ(out, a, rad) {
 
 module.exports = mouseListen
 
-var mouse = __webpack_require__(61)
+var mouse = __webpack_require__(59)
 
 function mouseListen (element, callback) {
   if (!callback) {
@@ -15142,7 +15005,7 @@ function mouseListen (element, callback) {
 
 
 /***/ }),
-/* 61 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15209,13 +15072,13 @@ exports.y = mouseRelativeY
 
 
 /***/ }),
-/* 62 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var toPX = __webpack_require__(63)
+var toPX = __webpack_require__(61)
 
 module.exports = mouseWheelListen
 
@@ -15256,13 +15119,13 @@ function mouseWheelListen(element, callback, noScroll) {
 
 
 /***/ }),
-/* 63 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var parseUnit = __webpack_require__(64)
+var parseUnit = __webpack_require__(62)
 
 module.exports = toPX
 
@@ -15322,7 +15185,7 @@ function toPX(str, element) {
 }
 
 /***/ }),
-/* 64 */
+/* 62 */
 /***/ (function(module, exports) {
 
 module.exports = function parseUnit(str, out) {
@@ -15337,7 +15200,7 @@ module.exports = function parseUnit(str, out) {
 }
 
 /***/ }),
-/* 65 */
+/* 63 */
 /***/ (function(module, exports) {
 
 var rootPosition = { left: 0, top: 0 }
@@ -15368,7 +15231,7 @@ function getBoundingClientOffset (element) {
 
 
 /***/ }),
-/* 66 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15408,7 +15271,7 @@ class ShaderProgram {
         this.unifViewProj = __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].getUniformLocation(this.prog, "u_ViewProj");
         this.unifColor = __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].getUniformLocation(this.prog, "u_Color");
         this.unifTime = __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].getUniformLocation(this.prog, "u_Time");
-        //this.unifResolution = gl.getUniformLocation(this.prog, "u_Resolution");
+        this.unifLength = __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].getUniformLocation(this.prog, "u_Length");
     }
     use() {
         if (activeProgram !== this.prog) {
@@ -15441,6 +15304,13 @@ class ShaderProgram {
         }
         this.time = t;
     }
+    setLength(t) {
+        this.use();
+        if (this.unifLength !== -1) {
+            __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* gl */].uniform1f(this.unifLength, this.length);
+        }
+        this.length = t;
+    }
     setGeometryColor(color) {
         this.use();
         if (this.unifColor !== -1) {
@@ -15471,28 +15341,64 @@ class ShaderProgram {
 
 
 /***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+module.exports = "#version 300 es\n\nuniform float u_Time; \nuniform float u_Length;\n\nuniform mat4 u_Model;      \nuniform mat4 u_ModelInvTr;\nuniform mat4 u_ViewProj;    \n\nin vec4 vs_Pos;             \nin vec4 vs_Nor;             \nin vec4 vs_Col;             \n\nout vec4 fs_Nor;            // The array of normals that has been transformed by u_ModelInvTr. This is implicitly passed to the fragment shader.\nout vec4 fs_LightVec;       // The direction in which our virtual light lies, relative to each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Pos;\n\nconst vec4 lightPos = vec4(0.0, 0.0, 10.0, 1.0); \n\nfloat dist (vec3 x, vec3 y) {\n    return pow((x.x - y.x), 2.0) + pow((x.y - y.y), 2.0) + pow((x.z - y.z), 2.0);\n}\n\nvoid main()\n{\n    fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation\n    mat3 invTranspose = mat3(u_ModelInvTr);\n    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);\n\n    vec3 xyz = vec3(vs_Pos.xyz) * sin(u_Time * 0.1);\n\n    //heart\n    float x = vs_Pos.x;\n    float y = vs_Pos.y;\n    float z = vs_Pos.z;\n    float w = vs_Pos.w;\n\n    float x2 = x;\n    float y2 = y;\n    float z2 = z;\n\n    //float tune = 0.2 + pow(sin (u_Length * u_Time + y / 25.0), 4.0);\n    \n    float tune = pow(sin(u_Time * 0.05 + y / 25.0), 4.0);\n    \n    //heart shape\n    y2 = (0.9 * y + (abs(x) * sqrt(20.0 + abs(x))/8.0));\n    z2 = z * (0.4 +  y2/9.0);\n    //z2 *= tune;\n    \n    float dist = dist(vec3(x2, y2, z2), vec3(0.0, 1.0, 0.0));\n    vec4 change_Pos = vec4(x2, y2, z2, w);\n\n    if(dist < 0.9) {\n        change_Pos *= 2.0;\n    }\n\n\n    vec4 modelposition = u_Model * change_Pos;   // Temporarily store the transformed vertex positions for use below\n\n    fs_LightVec = sin(u_Time * 0.01) * lightPos - modelposition;  // Compute the direction in which the light source lies\n    fs_Pos = modelposition;\n    gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is\n                                             // used to render the final positions of the geometry's vertices\n}\n"
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports) {
+
+module.exports = "#version 300 es\n\nprecision highp float;\n\nuniform vec4 u_Color; // The color with which to render this instance of geometry.\nuniform float u_Time;\n\n// These are the interpolated values out of the rasterizer, so you can't know\n// their specific values without knowing the vertices that contributed to them\nin vec4 fs_Nor;\nin vec4 fs_LightVec;\nin vec4 fs_Col;\nin vec4 fs_Pos;\n\nout vec4 out_Col; // This is the final output color that you will see on your\n                  // screen for the pixel that is currently being processed.\n\n//\tSimplex 3D Noise \n//\tby Ian McEwan, Ashima Arts\n//\nvec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}\nvec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}\n\nfloat snoise(vec3 v){ \n  const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;\n  const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);\n\n// First corner\n  vec3 i  = floor(v + dot(v, C.yyy) );\n  vec3 x0 =   v - i + dot(i, C.xxx) ;\n\n// Other corners\n  vec3 g = step(x0.yzx, x0.xyz);\n  vec3 l = 1.0 - g;\n  vec3 i1 = min( g.xyz, l.zxy );\n  vec3 i2 = max( g.xyz, l.zxy );\n\n  //  x0 = x0 - 0. + 0.0 * C \n  vec3 x1 = x0 - i1 + 1.0 * C.xxx;\n  vec3 x2 = x0 - i2 + 2.0 * C.xxx;\n  vec3 x3 = x0 - 1. + 3.0 * C.xxx;\n\n// Permutations\n  i = mod(i, 289.0 ); \n  vec4 p = permute( permute( permute( \n             i.z + vec4(0.0, i1.z, i2.z, 1.0 ))\n           + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) \n           + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));\n\n// Gradients\n// ( N*N points uniformly over a square, mapped onto an octahedron.)\n  float n_ = 1.0/7.0; // N=7\n  vec3  ns = n_ * D.wyz - D.xzx;\n\n  vec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)\n\n  vec4 x_ = floor(j * ns.z);\n  vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)\n\n  vec4 x = x_ *ns.x + ns.yyyy;\n  vec4 y = y_ *ns.x + ns.yyyy;\n  vec4 h = 1.0 - abs(x) - abs(y);\n\n  vec4 b0 = vec4( x.xy, y.xy );\n  vec4 b1 = vec4( x.zw, y.zw );\n\n  vec4 s0 = floor(b0)*2.0 + 1.0;\n  vec4 s1 = floor(b1)*2.0 + 1.0;\n  vec4 sh = -step(h, vec4(0.0));\n\n  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;\n  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;\n\n  vec3 p0 = vec3(a0.xy,h.x);\n  vec3 p1 = vec3(a0.zw,h.y);\n  vec3 p2 = vec3(a1.xy,h.z);\n  vec3 p3 = vec3(a1.zw,h.w);\n\n//Normalise gradients\n  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));\n  p0 *= norm.x;\n  p1 *= norm.y;\n  p2 *= norm.z;\n  p3 *= norm.w;\n\n// Mix final noise value\n  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);\n  m = m * m;\n  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), \n                                dot(p2,x2), dot(p3,x3) ) );\n}\n\nfloat dist (vec3 x, vec3 y) {\n    return pow((x.x - y.x), 2.0) + pow((x.y - y.y), 2.0) + pow((x.z - y.z), 2.0);\n}\n\nvoid main()\n{\n    // Material base color (before shading)\n        vec4 diffuseColor = u_Color;\n        // Calculate the diffuse term for Lambert shading\n        float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec + vec4(sin(u_Time * 0.1))));\n\n        float ambientTerm = 0.7;\n\n        float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier\n                                                            //to simulate ambient lighting. This ensures that faces that are not\n                                                            //lit by our point light are not completely black.\n    float x1 = fs_Pos.x;\n    float y1 = fs_Pos.y;\n    float z1 = fs_Pos.z;\n\n    vec3 uv = fs_Pos.xyz;\n\n    vec4 color = u_Color;\n    float dist = dist(vec3(x1, y1 + 2.0, z1 - 1.0), vec3(0.0, 2.0, 0.0));\n    \n    float snoise = snoise(vec3(snoise(uv), snoise(uv), snoise(uv)));\n\n    //create a mineral core\n    if(dist < 0.35) {\n        vec3 a = vec3(1.0, 0.82, 0.863);\n        vec3 b = vec3(0.5,0.5,0.5);\n        vec3 c = vec3(1.0,1.0,0.5);\n        vec3 d = vec3(0.80,0.20,0.20);\n        vec3 color = vec3(a + b * cos(2.0 * 3.14159 * (c * diffuseTerm + d)));\n    }\n    \n    vec4 view_vec = fs_Pos * vec4(2.0, 2.0 , 8.0, 1.0);\n    vec4 light_vec = fs_LightVec;\n    vec4 average = normalize((view_vec + light_vec) / 2.0);\n    vec4 normal = normalize(fs_Nor);\n\n    float exp = 50.0;\n    \n    float SpecularIntensity = max(pow(dot(average, normal), exp), 0.0);\n\n    //diffuseColor = vec4(color.rgb * lightIntensity + SpecularIntensity, 1.0);\n\n    float x = sin(u_Time * 0.1);\n\n    if(diffuseTerm > 0.99){\n        color = diffuseColor * vec4(1.0, 1.0, 1.0, 1.0);\n    } else if(diffuseTerm > 0.95){\n        color = diffuseColor * vec4(0.95, 0.95, 0.95, 1.0);\n    } else if(diffuseTerm > 0.90){\n        color = diffuseColor * vec4(0.93, 0.93, 0.93, 1.0);\n    } else if(diffuseTerm > 0.85){\n        color = diffuseColor * vec4(0.8, 0.8, 0.8, 1.0);\n    } else if(diffuseTerm > 0.75){\n        color = diffuseColor * vec4(0.7, 0.7, 0.7, 1.0);\n    } else if(diffuseTerm > 0.7){\n        color = diffuseColor * vec4(0.6, 0.6, 0.6, 1.0);\n    } else{\n        color = diffuseColor * vec4(1.0, 0.9, 0.9, 1.0);\n    }\n\n    out_Col = vec4(color.rgb, 1.0);\n}\n"
+
+/***/ }),
 /* 67 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\n\n//This is a vertex shader. While it is called a \"shader\" due to outdated conventions, this file\n//is used to apply matrix transformations to the arrays of vertex data passed to it.\n//Since this code is run on your GPU, each vertex is transformed simultaneously.\n//If it were run on your CPU, each vertex would have to be processed in a FOR loop, one at a time.\n//This simultaneous transformation allows your program to run much faster, especially when rendering\n//geometry with millions of vertices.\n\nuniform float u_Time; \n\nuniform mat4 u_Model;       // The matrix that defines the transformation of the\n                            // object we're rendering. In this assignment,\n                            // this will be the result of traversing your scene graph.\n\nuniform mat4 u_ModelInvTr;  // The inverse transpose of the model matrix.\n                            // This allows us to transform the object's normals properly\n                            // if the object has been non-uniformly scaled.\n\nuniform mat4 u_ViewProj;    // The matrix that defines the camera's transformation.\n                            // We've written a static matrix for you to use for HW2,\n                            // but in HW3 you'll have to generate one yourself\n\nin vec4 vs_Pos;             // The array of vertex positions passed to the shader\n\nin vec4 vs_Nor;             // The array of vertex normals passed to the shader\n\nin vec4 vs_Col;             // The array of vertex colors passed to the shader.\n\nout vec4 fs_Nor;            // The array of normals that has been transformed by u_ModelInvTr. This is implicitly passed to the fragment shader.\nout vec4 fs_LightVec;       // The direction in which our virtual light lies, relative to each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Pos;\n\nconst vec4 lightPos = vec4(5, 5, 3, 1); //The position of our virtual light, which is used to compute the shading of\n                                        //the geometry in the fragment shader.\n\n\nfloat random (in vec2 st) {\n    return fract(sin(dot(st.xy,\n                         vec2(12.9898,78.233)))*\n        43758.5453123);\n}\n\nfloat snoise (in vec2 st) {\n    vec2 i = floor(st);\n    vec2 f = fract(st);\n\n    // Four corners in 2D of a tile\n    float a = random(i);\n    float b = random(i + vec2(1.0, 0.0));\n    float c = random(i + vec2(0.0, 1.0));\n    float d = random(i + vec2(1.0, 1.0));\n\n    vec2 u = f * f * (3.0 - 2.0 * f);\n\n    return mix(a, b, u.x) +\n            (c - a)* u.y * (1.0 - u.x) +\n            (d - b) * u.x * u.y;\n}\n\nfloat fbm (in vec2 st) {\n    // Initial values\n    float value = 0.0;\n    float amplitude = .5;\n    float frequency = 0.;\n\n    // Loop of octaves\n    for (int i = 0; i < 15; i++) {\n        value += amplitude * abs(snoise(st));\n        st *= 2.;\n        amplitude *= .5;\n    }\n    return value;\n}\nvoid main()\n{\n    fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation\n    mat3 invTranspose = mat3(u_ModelInvTr);\n    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);          // Pass the vertex normals to the fragment shader for interpolation.\n                                                            // Transform the geometry's normals by the inverse transpose of the\n                                                            // model matrix. This is necessary to ensure the normals remain\n                                                            // perpendicular to the surface after the surface is transformed by\n                                                            // the model matrix.\n\n    float change = 3.0f / sqrt(vs_Pos.x * vs_Pos.x + vs_Pos.z * vs_Pos.z);\n    float change2 = 2.0f / sqrt(vs_Pos.y * vs_Pos.y + vs_Pos.x * vs_Pos.x);\n    float chX = vs_Pos.x * change2 - vs_Pos.x;\n    float chY = vs_Pos.y * change2 - vs_Pos.y;\n    float chZ = vs_Pos.z * change - vs_Pos.z;\n\n    float x = vs_Pos.x + (chX * (sin(u_Time * 0.1) + 1.f) /2.f);\n    float y = vs_Pos.y + (chY * (cos(u_Time * 0.1) + 1.f) / 2.f);\n    float z = vs_Pos.z + (chZ * (sin(u_Time * 0.1) + 1.f) /2.f);  \n\n    float fbm1 = fbm(vec2(vs_Pos.x, vs_Pos.y));\n    float fbm2 = fbm(vec2(fbm1, vs_Pos.z));\n    vec4 changePos = vec4(x * fbm2, y * fbm2, z * fbm2, 1);\n\n    vec4 modelposition = u_Model * changePos;   // Temporarily store the transformed vertex positions for use below\n\n    fs_LightVec = lightPos - modelposition;  // Compute the direction in which the light source lies\n    fs_Pos = modelposition;\n    gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is\n                                             // used to render the final positions of the geometry's vertices\n}\n"
+module.exports = "#version 300 es\n\n//This is a vertex shader. While it is called a \"shader\" due to outdated conventions, this file\n//is used to apply matrix transformations to the arrays of vertex data passed to it.\n//Since this code is run on your GPU, each vertex is transformed simultaneously.\n//If it were run on your CPU, each vertex would have to be processed in a FOR loop, one at a time.\n//This simultaneous transformation allows your program to run much faster, especially when rendering\n//geometry with millions of vertices.\n\nuniform mat4 u_Model;       // The matrix that defines the transformation of the\n                            // object we're rendering. In this assignment,\n                            // this will be the result of traversing your scene graph.\n\nuniform mat4 u_ModelInvTr;  // The inverse transpose of the model matrix.\n                            // This allows us to transform the object's normals properly\n                            // if the object has been non-uniformly scaled.\n\nuniform mat4 u_ViewProj;    // The matrix that defines the camera's transformation.\n                            // We've written a static matrix for you to use for HW2,\n                            // but in HW3 you'll have to generate one yourself\n\nin vec4 vs_Pos;             // The array of vertex positions passed to the shader\n\nin vec4 vs_Nor;             // The array of vertex normals passed to the shader\n\nin vec4 vs_Col;             // The array of vertex colors passed to the shader.\n\nout vec4 fs_Nor;            // The array of normals that has been transformed by u_ModelInvTr. This is implicitly passed to the fragment shader.\nout vec4 fs_LightVec;       // The direction in which our virtual light lies, relative to each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Pos;\n\nconst vec4 lightPos = vec4(5, 5, 3, 1); //The position of our virtual light, which is used to compute the shading of\n                                        //the geometry in the fragment shader.\n\nvoid main()\n{\n    fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation\n\n    mat3 invTranspose = mat3(u_ModelInvTr);\n    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);          // Pass the vertex normals to the fragment shader for interpolation.\n                                                            // Transform the geometry's normals by the inverse transpose of the\n                                                            // model matrix. This is necessary to ensure the normals remain\n                                                            // perpendicular to the surface after the surface is transformed by\n                                                            // the model matrix.\n\n    fs_Nor = -1.0 * vs_Nor;\n\n    vec4 modelposition = u_Model * vs_Pos;   // Temporarily store the transformed vertex positions for use below\n\n    fs_LightVec = lightPos - modelposition;  // Compute the direction in which the light source lies\n    fs_Pos = modelposition;\n                               \n    gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is\n                                             // used to render the final positions of the geometry's vertices\n}\n"
 
 /***/ }),
 /* 68 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\n\n// This is a fragment shader. If you've opened this file first, please\n// open and read lambert.vert.glsl before reading on.\n// Unlike the vertex shader, the fragment shader actually does compute\n// the shading of geometry. For every pixel in your program's output\n// screen, the fragment shader is run for every bit of geometry that\n// particular pixel overlaps. By implicitly interpolating the position\n// data passed into the fragment shader by the vertex shader, the fragment shader\n// can compute what color to apply to its pixel based on things like vertex\n// position, light position, and vertex color.\nprecision highp float;\n\nuniform vec4 u_Color; // The color with which to render this instance of geometry.\nuniform float u_Time;\n\n// These are the interpolated values out of the rasterizer, so you can't know\n// their specific values without knowing the vertices that contributed to them\nin vec4 fs_Nor;\nin vec4 fs_LightVec;\nin vec4 fs_Col;\nin vec4 fs_Pos;\n\nout vec4 out_Col; // This is the final output color that you will see on your\n                  // screen for the pixel that is currently being processed.\n\n\nfloat random (in vec2 st) {\n    return fract(sin(dot(st.xy,\n                         vec2(12.9898,78.233)))*\n        43758.5453123);\n}\n\nfloat snoise (in vec2 st) {\n    vec2 i = floor(st);\n    vec2 f = fract(st);\n\n    // Four corners in 2D of a tile\n    float a = random(i);\n    float b = random(i + vec2(1.0, 0.0));\n    float c = random(i + vec2(0.0, 1.0));\n    float d = random(i + vec2(1.0, 1.0));\n\n    vec2 u = f * f * (3.0 - 2.0 * f);\n\n    return mix(a, b, u.x) +\n            (c - a)* u.y * (1.0 - u.x) +\n            (d - b) * u.x * u.y;\n}\n\nfloat fbm (in vec2 st) {\n    // Initial values\n    float value = 0.0;\n    float amplitude = .5;\n    float frequency = 0.;\n\n    // Loop of octaves\n    for (int i = 0; i < 8; i++) {\n        value += amplitude * abs(snoise(st));\n        st *= 2.;\n        amplitude *= .5;\n    }\n    return value;\n}\n\nvoid main()\n{\n    // Material base color (before shading)\n        vec4 diffuseColor = u_Color;\n        // Calculate the diffuse term for Lambert shading\n        float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec));\n        // Avoid negative lighting values\n        // diffuseTerm = clamp(diffuseTerm, 0, 1);\n\n        float ambientTerm = 0.2;\n\n        float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier\n                                                            //to simulate ambient lighting. This ensures that faces that are not\n                                                            //lit by our point light are not completely black.\n      float fbm = fbm(vec2(fs_Pos.x, fs_Pos.y));\n\n        vec3 a = vec3(0.5 * cos(u_Time*.01), 0.5, 0.5);\n        vec3 b = vec3(0.5, 0.5* cos(u_Time*.01), 0.5);\n        vec3 c = vec3(1.0, 1.0, 1.0);\n        vec3 d = vec3(0.0, 0.33*cos(u_Time*.01), 0.67);\n        vec4 color = vec4(a + b  * cos(u_Time * 0.01 * fbm * 2.f * 3.14159 * (c * diffuseTerm + d)), 1);\n\n        //out_Col = vec4(color.rgb, 1);\n\n    vec4 col = vec4(diffuseColor.rgb * lightIntensity, diffuseColor.a);\n\n    float greyRed = diffuseColor.x * 0.21;\n    float greyGreen = diffuseColor.y * 0.72;\n    float greyBlue = diffuseColor.z * 0.07;\n\n    float grey = greyRed + greyGreen + greyBlue;\n\n    if(grey < .1f) {\n        out_Col = vec4(0,0,0,1);\n    }\n    else {\n        out_Col = vec4(color.rgb, 1);\n\n    }\n\n\n        // Compute final shaded color\n\n\n\n}\n"
+module.exports = "#version 300 es\n\nprecision highp float;\n\nuniform vec4 u_Color; // The color with which to render this instance of geometry.\nuniform float u_Time;\nuniform float u_Length;\n\n// These are the interpolated values out of the rasterizer, so you can't know\n// their specific values without knowing the vertices that contributed to them\nin vec4 fs_Nor;\nin vec4 fs_LightVec;\nin vec4 fs_Col;\nin vec4 fs_Pos;\n\nout vec4 out_Col; // This is the final output color that you will see on your\n// screen for the pixel that is currently being processed.\n\nconst vec3 a = vec3(0.4, 0.5, 0.8);\nconst vec3 b = vec3(0.2, 0.4, 0.2);\nconst vec3 c = vec3(1.0, 1.0, 2.0);\nconst vec3 d = vec3(0.25, 0.25, 0.0);\n\nconst vec3 e = vec3(0.2, 0.5, 0.8);\nconst vec3 f = vec3(0.2, 0.25, 0.5);\nconst vec3 g = vec3(1.0, 1.0, 0.1);\nconst vec3 h = vec3(0.0, 0.8, 0.2);\n\nvec3 random3(vec3 c) {\n    float j = 4096.0 * sin(dot(c,vec3(17.0, 59.4, 15.0)));\n    vec3 r;\n    r.z = fract(512.0 * j);\n    j *= .125;\n    r.x = fract(512.0 * j);\n    j *= .125;\n    r.y = fract(512.0 * j);\n    return r - 0.5;\n}\n\nvec3 Gradient(float t)\n{\nreturn a + b * cos(6.2831 * (c * t + d));\n}\n\nvec3 Gradient2(float t)\n{\nreturn e + f * cos(6.2831 * (g * t + h));\n}\n\nfloat surflet(vec3 P, vec3 gridPoint)\n{\n// Compute falloff function by converting linear distance to a polynomial\nfloat distX = abs(P.x - gridPoint.x);\nfloat distY = abs(P.y - gridPoint.y);\nfloat distZ = abs(P.z - gridPoint.z);\nfloat tX = 1.0 - 6.0 * pow(distX, 5.0) + 15.0 * pow(distX, 4.0) - 10.0 * pow(distX, 3.0);\nfloat tY = 1.0 - 6.0 * pow(distY, 5.0) + 15.0 * pow(distY, 4.0) - 10.0 * pow(distY, 3.0);\nfloat tZ = 1.0 - 6.0 * pow(distZ, 5.0) + 15.0 * pow(distZ, 4.0) - 10.0 * pow(distZ, 3.0);\n\n// Get the random vector for the grid point\nvec3 gradient = random3(gridPoint);\n// Get the vector from the grid point to P\nvec3 diff = P - gridPoint;\n// Get the value of our height field by dotting grid->P with our gradient\nfloat height = dot(diff, gradient);\n// Scale our height field (i.e. reduce it) by our polynomial falloff function\nreturn height * tX * tY;\n}\n\nfloat PerlinNoise(vec3 uv)\n{\n// Tile the space\nvec3 uv1 = floor(uv);\nvec3 uv2 = uv1 + vec3(1,0,0);\nvec3 uv3 = uv1 + vec3(0,1,0);\nvec3 uv4 = uv1 + vec3(0,0,1);\nvec3 uv5 = uv1 + vec3(1,0,1);\nvec3 uv6 = uv1 + vec3(1,1,0);\nvec3 uv7 = uv1 + vec3(1,1,1);\nvec3 uv8 = uv1 + vec3(0,1,1);\n\nreturn surflet(uv1, uv2) + surflet(uv1, uv3) + surflet(uv1, uv4) + surflet(uv1, uv5);\n}\n\n\nvoid main()\n{\n\nfloat x2 = fs_Pos.x;\nfloat y2 = fs_Pos.y;\nfloat z2 = fs_Pos.z;\n\n//#define BASIC\n//#define SUMMED\n//#define ABSOLUTE\n//#define RECURSIVE1\n#define RECURSIVE2\n\nvec3 uv = vec3(x2, y2, z2);\nvec3 height;\n\n#ifdef BASIC\n// Basic Perlin noise\nfloat perlin = PerlinNoise(uv);\nheight = vec3((perlin + 1.0) * 0.5);\nheight.r += step(0.98, fract(uv.x)) + step(0.98, fract(uv.y));\n#endif\n\n#ifdef SUMMED\nfloat summedNoise = 0.0;\nfloat amplitude = 0.2;\nfor(float i = 2.0; i <= 800.0; i *= 2.0) {\nuv = vec3(cos(3.14159/3.0 * i) * uv.x - sin(3.14159/3.0 * i) * uv.y,\nsin(3.14159/3.0 * i) * uv.x + cos(3.14159/3.0 * i) * uv.y,\nsin(3.14159/3.0 * i) * uv.y + cos(3.14159/3.0 * i) * uv.z);\nfloat perlin = abs(PerlinNoise(uv));// * amplitude;\nsummedNoise += perlin * amplitude;\namplitude *= 0.5;\n}\nheight = vec3(summedNoise);//vec3((summedNoise + 1) * 0.5);\n#endif\n\n#ifdef ABSOLUTE\nfloat perlin = PerlinNoise(uv);\nheight = vec3(1.0) - vec3(abs(perlin));\n//color.r += step(0.98, fract(uv.x)) + step(0.98, fract(uv.y));\n#endif\n\n#ifdef RECURSIVE1\nvec3 planet = vec3(cos(u_Time * 0.01 * 3.14159),\ncos(u_Time * 0.01 * 3.14159),\nsin(u_Time * 0.01 * 3.14159) * 2.0 + vec3(4.0));\nvec3 planetDiff = planet - uv;\nfloat len = length(planetDiff);\nvec3 offset = vec3(PerlinNoise(uv + u_Time * 0.01), PerlinNoise(uv + vec3(5.2, 1.3, 1.3)), PerlinNoise(uv + vec3(5.2, 1.3, 1.3)));\nif(len < 1.0) {\noffset += planetDiff * (1.0 - len);\n}\nfloat perlin = PerlinNoise(uv + offset);\nheight = vec3((perlin + 1.0) * 0.5);\n#endif\n\n#ifdef RECURSIVE2\n// Recursive Perlin noise (2 levels)\nvec3 offset1 = vec3(PerlinNoise(uv + cos(u_Time * 3.14159 * 0.01)),\nPerlinNoise(uv + vec3(5.2, 1.3, 1.3)),\nPerlinNoise(uv + vec3(5.2, 1.3, 1.3)));\nvec3 offset2 = vec3(PerlinNoise(uv + offset1 + vec3(1.7, 9.2, 1.3)),\nPerlinNoise(uv + sin(u_Time * 3.14159 * 0.01) + offset1 + vec3(8.3, 2.8, 1.3)),\nPerlinNoise(uv + sin(u_Time * 3.14159 * 0.01) + offset1 + vec3(8.3, 2.8, 1.3)));\nfloat perlin = PerlinNoise(uv + offset2);\nvec3 baseGradient = Gradient(perlin);\nbaseGradient = mix(baseGradient, vec3(perlin), length(offset1));\n// baseGradient = mix(baseGradient, Gradient2(perlin), offset2.y);\nheight = baseGradient;\n// color = vec3((perlin + 1) * 0.5);\n#endif\n\n// Material base color (before shading)\nvec4 diffuseColor = vec4(1.0,0.2,0.2,1.0);\n\n// Calculate the diffuse term for Lambert shading\nfloat diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec));\n// Avoid negative lighting values\n// diffuseTerm = clamp(diffuseTerm, 0, 1);\n\nfloat ambientTerm = 0.3;\n\nfloat lightIntensity = diffuseTerm + ambientTerm;\n\n// Compute final shaded color\nout_Col = diffuseColor * vec4(height.xyz, 1.0);\n//out_Col = vec4(diffuseColor.rgb * lightIntensity, diffuseColor.a);\n}\n"
 
 /***/ }),
 /* 69 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\n\n//This is a vertex shader. While it is called a \"shader\" due to outdated conventions, this file\n//is used to apply matrix transformations to the arrays of vertex data passed to it.\n//Since this code is run on your GPU, each vertex is transformed simultaneously.\n//If it were run on your CPU, each vertex would have to be processed in a FOR loop, one at a time.\n//This simultaneous transformation allows your program to run much faster, especially when rendering\n//geometry with millions of vertices.\n\nuniform mat4 u_Model;       // The matrix that defines the transformation of the\n                            // object we're rendering. In this assignment,\n                            // this will be the result of traversing your scene graph.\n\nuniform mat4 u_ModelInvTr;  // The inverse transpose of the model matrix.\n                            // This allows us to transform the object's normals properly\n                            // if the object has been non-uniformly scaled.\n\nuniform mat4 u_ViewProj;    // The matrix that defines the camera's transformation.\n                            // We've written a static matrix for you to use for HW2,\n                            // but in HW3 you'll have to generate one yourself\n\nin vec4 vs_Pos;             // The array of vertex positions passed to the shader\n\nin vec4 vs_Nor;             // The array of vertex normals passed to the shader\n\nin vec4 vs_Col;             // The array of vertex colors passed to the shader.\n\nout vec4 fs_Nor;            // The array of normals that has been transformed by u_ModelInvTr. This is implicitly passed to the fragment shader.\nout vec4 fs_LightVec;       // The direction in which our virtual light lies, relative to each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.\n\nconst vec4 lightPos = vec4(5, 5, 3, 1); //The position of our virtual light, which is used to compute the shading of\n                                        //the geometry in the fragment shader.\n\nvoid main()\n{\n    fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation\n\n    mat3 invTranspose = mat3(u_ModelInvTr);\n    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);          // Pass the vertex normals to the fragment shader for interpolation.\n                                                            // Transform the geometry's normals by the inverse transpose of the\n                                                            // model matrix. This is necessary to ensure the normals remain\n                                                            // perpendicular to the surface after the surface is transformed by\n                                                            // the model matrix.\n\n\n    vec4 modelposition = u_Model * vs_Pos;   // Temporarily store the transformed vertex positions for use below\n\n    fs_LightVec = lightPos - modelposition;  // Compute the direction in which the light source lies\n\n    gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is\n                                             // used to render the final positions of the geometry's vertices\n}\n"
+module.exports = "#version 300 es\n\n//This is a vertex shader. While it is called a \"shader\" due to outdated conventions, this file\n//is used to apply matrix transformations to the arrays of vertex data passed to it.\n//Since this code is run on your GPU, each vertex is transformed simultaneously.\n//If it were run on your CPU, each vertex would have to be processed in a FOR loop, one at a time.\n//This simultaneous transformation allows your program to run much faster, especially when rendering\n//geometry with millions of vertices.\n\n\nuniform float u_Time; \nuniform float u_Length;\n\nuniform mat4 u_Model;      \nuniform mat4 u_ModelInvTr;  \nuniform mat4 u_ViewProj;    \n\nin vec4 vs_Pos;             \nin vec4 vs_Nor;            \nin vec4 vs_Col;             \n\nout vec4 fs_Nor;            // The array of normals that has been transformed by u_ModelInvTr. This is implicitly passed to the fragment shader.\nout vec4 fs_LightVec;       // The direction in which our virtual light lies, relative to each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Pos;\n\nconst vec4 lightPos = vec4(0, 0, 10, 1); //The position of our virtual light, which is used to compute the shading of\n                                        //the geometry in the fragment shader.\nfloat dist (vec3 x, vec3 y) {\n    return pow((x.x - y.x), 2.0) + pow((x.y - y.y), 2.0) + pow((x.z - y.z), 2.0);\n}\n\n\n///\tSimplex 3D Noise \n//\tby Ian McEwan, Ashima Arts\n//\nvec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}\nvec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}\n\nfloat snoise(vec3 v){ \n  const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;\n  const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);\n\n// First corner\n  vec3 i  = floor(v + dot(v, C.yyy) );\n  vec3 x0 =   v - i + dot(i, C.xxx) ;\n\n// Other corners\n  vec3 g = step(x0.yzx, x0.xyz);\n  vec3 l = 1.0 - g;\n  vec3 i1 = min( g.xyz, l.zxy );\n  vec3 i2 = max( g.xyz, l.zxy );\n\n  //  x0 = x0 - 0. + 0.0 * C \n  vec3 x1 = x0 - i1 + 1.0 * C.xxx;\n  vec3 x2 = x0 - i2 + 2.0 * C.xxx;\n  vec3 x3 = x0 - 1. + 3.0 * C.xxx;\n\n// Permutations\n  i = mod(i, 289.0 ); \n  vec4 p = permute( permute( permute( \n             i.z + vec4(0.0, i1.z, i2.z, 1.0 ))\n           + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) \n           + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));\n\n// Gradients\n// ( N*N points uniformly over a square, mapped onto an octahedron.)\n  float n_ = 1.0/7.0; // N=7\n  vec3  ns = n_ * D.wyz - D.xzx;\n\n  vec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)\n\n  vec4 x_ = floor(j * ns.z);\n  vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)\n\n  vec4 x = x_ *ns.x + ns.yyyy;\n  vec4 y = y_ *ns.x + ns.yyyy;\n  vec4 h = 1.0 - abs(x) - abs(y);\n\n  vec4 b0 = vec4( x.xy, y.xy );\n  vec4 b1 = vec4( x.zw, y.zw );\n\n  vec4 s0 = floor(b0)*2.0 + 1.0;\n  vec4 s1 = floor(b1)*2.0 + 1.0;\n  vec4 sh = -step(h, vec4(0.0));\n\n  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;\n  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;\n\n  vec3 p0 = vec3(a0.xy,h.x);\n  vec3 p1 = vec3(a0.zw,h.y);\n  vec3 p2 = vec3(a1.xy,h.z);\n  vec3 p3 = vec3(a1.zw,h.w);\n\n//Normalise gradients\n  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));\n  p0 *= norm.x;\n  p1 *= norm.y;\n  p2 *= norm.z;\n  p3 *= norm.w;\n\n// Mix final noise value\n  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);\n  m = m * m;\n  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), \n                                dot(p2,x2), dot(p3,x3) ) );\n}\n\nvoid main()\n{\n    fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation\n    mat3 invTranspose = mat3(u_ModelInvTr);\n    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);\n\n    //heart\n    float x = vs_Pos.x;\n    float y = vs_Pos.y;\n    float z = vs_Pos.z;\n    float w = vs_Pos.w;\n\n    float x2 = x;\n    float y2 = y;\n    float z2 = z;\n\n    float tune = pow(sin(u_Time * 0.05 + y / 25.0), 4.0);\n\n    //heart shape\n    y2 = (0.9 * y + (abs(x) * sqrt(20.0 + abs(x))/8.0));\n    z2 = z * (0.4 +  y2/9.0);\n    //z2 *= tune * 0.2;\n\n    vec3 uv = vec3(x2, y2, z2);\n    float e = snoise(uv) * 0.3;\n    vec3 noise = vec3(e, e, e);\n    float e2 = snoise(noise);\n    vec3 noise2 = vec3(e2,e2,e2);\n    float e3 = snoise(noise2);\n    vec3 noise3 = vec3(e3,e3,e3); \n    //final\n    vec4 change_Pos = vec4(x2, y2, z2, w) + vec4(noise3.xyz, 1.0) * 7.0 * fs_Nor * u_Length;\n\n    float dist = dist(vec3(x2, y2, z2), vec3(0.0, 1.0, 0.0));\n\n    if(dist < 0.2) {\n        change_Pos *= 2.0;\n    }\n\n    vec4 modelposition = u_Model * change_Pos;   // Temporarily store the transformed vertex positions for use below\n    fs_LightVec = lightPos - modelposition;  // Compute the direction in which the light source lies\n    fs_Pos = modelposition;\n    gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is\n                                             // used to render the final positions of the geometry's vertices\n}\n"
 
 /***/ }),
 /* 70 */
 /***/ (function(module, exports) {
 
-module.exports = "#version 300 es\n\n// This is a fragment shader. If you've opened this file first, please\n// open and read lambert.vert.glsl before reading on.\n// Unlike the vertex shader, the fragment shader actually does compute\n// the shading of geometry. For every pixel in your program's output\n// screen, the fragment shader is run for every bit of geometry that\n// particular pixel overlaps. By implicitly interpolating the position\n// data passed into the fragment shader by the vertex shader, the fragment shader\n// can compute what color to apply to its pixel based on things like vertex\n// position, light position, and vertex color.\nprecision highp float;\n\nuniform vec4 u_Color; // The color with which to render this instance of geometry.\n\n// These are the interpolated values out of the rasterizer, so you can't know\n// their specific values without knowing the vertices that contributed to them\nin vec4 fs_Nor;\nin vec4 fs_LightVec;\nin vec4 fs_Col;\n\nout vec4 out_Col; // This is the final output color that you will see on your\n                  // screen for the pixel that is currently being processed.\n\nvoid main()\n{\n    // Material base color (before shading)\n        vec4 diffuseColor = u_Color;\n\n        // Calculate the diffuse term for Lambert shading\n        float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec));\n        // Avoid negative lighting values\n        // diffuseTerm = clamp(diffuseTerm, 0, 1);\n\n        float ambientTerm = 0.3;\n\n        float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier\n                                                            //to simulate ambient lighting. This ensures that faces that are not\n                                                            //lit by our point light are not completely black.\n\n        // Compute final shaded color\n        out_Col = vec4(diffuseColor.rgb * lightIntensity, diffuseColor.a);\n}\n"
+module.exports = "#version 300 es\n\n// This is a fragment shader. If you've opened this file first, please\n// open and read lambert.vert.glsl before reading on.\n// Unlike the vertex shader, the fragment shader actually does compute\n// the shading of geometry. For every pixel in your program's output\n// screen, the fragment shader is run for every bit of geometry that\n// particular pixel overlaps. By implicitly interpolating the position\n// data passed into the fragment shader by the vertex shader, the fragment shader\n// can compute what color to apply to its pixel based on things like vertex\n// position, light position, and vertex color.\nprecision highp float;\n\nuniform vec4 u_Color; // The color with which to render this instance of geometry.\nuniform float u_Time;\nuniform float u_Length;\n\n// These are the interpolated values out of the rasterizer, so you can't know\n// their specific values without knowing the vertices that contributed to them\nin vec4 fs_Nor;\nin vec4 fs_LightVec;\nin vec4 fs_Col;\nin vec4 fs_Pos;\n\nout vec4 out_Col; // This is the final output color that you will see on your\n                  // screen for the pixel that is currently being processed.\n\n//\tSimplex 3D Noise \n//\tby Ian McEwan, Ashima Arts\n//\nvec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}\nvec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}\n\nfloat snoise(vec3 v){ \n  const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;\n  const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);\n\n// First corner\n  vec3 i  = floor(v + dot(v, C.yyy) );\n  vec3 x0 =   v - i + dot(i, C.xxx) ;\n\n// Other corners\n  vec3 g = step(x0.yzx, x0.xyz);\n  vec3 l = 1.0 - g;\n  vec3 i1 = min( g.xyz, l.zxy );\n  vec3 i2 = max( g.xyz, l.zxy );\n\n  //  x0 = x0 - 0. + 0.0 * C \n  vec3 x1 = x0 - i1 + 1.0 * C.xxx;\n  vec3 x2 = x0 - i2 + 2.0 * C.xxx;\n  vec3 x3 = x0 - 1. + 3.0 * C.xxx;\n\n// Permutations\n  i = mod(i, 289.0 ); \n  vec4 p = permute( permute( permute( \n             i.z + vec4(0.0, i1.z, i2.z, 1.0 ))\n           + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) \n           + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));\n\n// Gradients\n// ( N*N points uniformly over a square, mapped onto an octahedron.)\n  float n_ = 1.0/7.0; // N=7\n  vec3  ns = n_ * D.wyz - D.xzx;\n\n  vec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)\n\n  vec4 x_ = floor(j * ns.z);\n  vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)\n\n  vec4 x = x_ *ns.x + ns.yyyy;\n  vec4 y = y_ *ns.x + ns.yyyy;\n  vec4 h = 1.0 - abs(x) - abs(y);\n\n  vec4 b0 = vec4( x.xy, y.xy );\n  vec4 b1 = vec4( x.zw, y.zw );\n\n  vec4 s0 = floor(b0)*2.0 + 1.0;\n  vec4 s1 = floor(b1)*2.0 + 1.0;\n  vec4 sh = -step(h, vec4(0.0));\n\n  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;\n  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;\n\n  vec3 p0 = vec3(a0.xy,h.x);\n  vec3 p1 = vec3(a0.zw,h.y);\n  vec3 p2 = vec3(a1.xy,h.z);\n  vec3 p3 = vec3(a1.zw,h.w);\n\n//Normalise gradients\n  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));\n  p0 *= norm.x;\n  p1 *= norm.y;\n  p2 *= norm.z;\n  p3 *= norm.w;\n\n// Mix final noise value\n  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);\n  m = m * m;\n  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), \n                                dot(p2,x2), dot(p3,x3) ) );\n}\n\nfloat dist (vec3 x, vec3 y) {\n    return pow((x.x - y.x), 2.0) + pow((x.y - y.y), 2.0) + pow((x.z - y.z), 2.0);\n}\n\nvoid main()\n{\n    // Material base color (before shading)\n        vec4 diffuseColor = u_Color;\n\n        // Calculate the diffuse term for Lambert shading\n        float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec + vec4(sin(u_Time * 0.1) + 1.0)));\n\n        float ambientTerm = 0.2;\n\n        float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier\n                                                            //to simulate ambient lighting. This ensures that faces that are not\n                                                            //lit by our point light are not completely black.\n    vec4 view_vec = fs_Pos * vec4(2.0, 2.0 , 2.0, 1.0);\n    vec4 light_vec = fs_LightVec;\n    vec4 average = normalize((view_vec + light_vec) / 1.0);\n    vec4 normal = normalize(fs_Nor);\n    float exp = 50.0;\n    float SpecularIntensity = max(pow(dot(average, normal), exp), 0.2);\n\n    float x1 = fs_Pos.x;\n    float y1 = fs_Pos.y;\n    float z1 = fs_Pos.z;\n\n    vec2 uv = fs_Pos.xy;\n\n    float dist = dist(vec3(x1, y1 + 2.0, z1 - 1.0), vec3(0.0, 2.0, 0.0));\n            \n  vec4 color = vec4( diffuseTerm );\n\n    // //create a mineral core\n    // if(dist > 0.) {\n    //     vec3 a = vec3(0.5,0.5,0.5);\n    //     vec3 b = vec3(0.5,0.5,0.5);\n    //     vec3 c = vec3(1.0,1.0,0.5);\n    //     vec3 d = vec3(0.80,0.20,0.20);\n    //     vec3 color = vec3(a + b * cos(2.0 * 3.14159 * (c * diffuseTerm + d)));\n    // } \n    \n    diffuseColor = vec4(diffuseColor.rgb * lightIntensity + SpecularIntensity, 1.0);\n\n    float x = sin(u_Time * 0.1);\n    if(x > 0.99){\n        color = diffuseColor * vec4(1.0, 1.0, 1.0, 1.0);\n    } else if(x > 0.9){\n        color = diffuseColor * vec4(0.95, 0.95, 0.95, 1.0);\n    } else if(x > 0.85){\n        color = diffuseColor * vec4(0.93, 0.93, 0.93, 1.0);\n    } else if(x > 0.8){\n        color = diffuseColor * vec4(0.8, 0.8, 0.8, 1.0);\n    } else if(x > 0.75){\n        color = diffuseColor * vec4(0.7, 0.7, 0.7, 1.0);\n    } else if(x > 0.7){\n        color = diffuseColor * vec4(0.6, 0.6, 0.6, 1.0);\n    } else{\n        color = diffuseColor * vec4(1.0, 0.9, 0.9, 1.0);\n    }\n     out_Col = color;\n\n}\n\n"
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports) {
+
+module.exports = "#version 300 es\n\n//This is a vertex shader. While it is called a \"shader\" due to outdated conventions, this file\n//is used to apply matrix transformations to the arrays of vertex data passed to it.\n//Since this code is run on your GPU, each vertex is transformed simultaneously.\n//If it were run on your CPU, each vertex would have to be processed in a FOR loop, one at a time.\n//This simultaneous transformation allows your program to run much faster, especially when rendering\n//geometry with millions of vertices.\n\nuniform float u_Length;\n\nuniform float u_Time; \n\nuniform mat4 u_Model;       // The matrix that defines the transformation of the\n                            // object we're rendering. In this assignment,\n                            // this will be the result of traversing your scene graph.\n\nuniform mat4 u_ModelInvTr;  // The inverse transpose of the model matrix.\n                            // This allows us to transform the object's normals properly\n                            // if the object has been non-uniformly scaled.\n\nuniform mat4 u_ViewProj;    // The matrix that defines the camera's transformation.\n                            // We've written a static matrix for you to use for HW2,\n                            // but in HW3 you'll have to generate one yourself\n\nin vec4 vs_Pos;             // The array of vertex positions passed to the shader\n\nin vec4 vs_Nor;             // The array of vertex normals passed to the shader\n\nin vec4 vs_Col;             // The array of vertex colors passed to the shader.\n\nout vec4 fs_Nor;            // The array of normals that has been transformed by u_ModelInvTr. This is implicitly passed to the fragment shader.\nout vec4 fs_LightVec;       // The direction in which our virtual light lies, relative to each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Pos;\n\nconst vec4 lightPos = vec4(0.0, 5.0, 0.0, 1.0); //The position of our virtual light, which is used to compute the shading of\n                                        //the geometry in the fragment shader.\n\n//\tSimplex 3D Noise \n//\tby Ian McEwan, Ashima Arts\n//\nvec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}\nvec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}\n\nfloat snoise(vec3 v){ \n  const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;\n  const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);\n\n// First corner\n  vec3 i  = floor(v + dot(v, C.yyy) );\n  vec3 x0 =   v - i + dot(i, C.xxx) ;\n\n// Other corners\n  vec3 g = step(x0.yzx, x0.xyz);\n  vec3 l = 1.0 - g;\n  vec3 i1 = min( g.xyz, l.zxy );\n  vec3 i2 = max( g.xyz, l.zxy );\n\n  //  x0 = x0 - 0. + 0.0 * C \n  vec3 x1 = x0 - i1 + 1.0 * C.xxx;\n  vec3 x2 = x0 - i2 + 2.0 * C.xxx;\n  vec3 x3 = x0 - 1. + 3.0 * C.xxx;\n\n// Permutations\n  i = mod(i, 289.0 ); \n  vec4 p = permute( permute( permute( \n             i.z + vec4(0.0, i1.z, i2.z, 1.0 ))\n           + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) \n           + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));\n\n// Gradients\n// ( N*N points uniformly over a square, mapped onto an octahedron.)\n  float n_ = 1.0/7.0; // N=7\n  vec3  ns = n_ * D.wyz - D.xzx;\n\n  vec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)\n\n  vec4 x_ = floor(j * ns.z);\n  vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)\n\n  vec4 x = x_ *ns.x + ns.yyyy;\n  vec4 y = y_ *ns.x + ns.yyyy;\n  vec4 h = 1.0 - abs(x) - abs(y);\n\n  vec4 b0 = vec4( x.xy, y.xy );\n  vec4 b1 = vec4( x.zw, y.zw );\n\n  vec4 s0 = floor(b0)*2.0 + 1.0;\n  vec4 s1 = floor(b1)*2.0 + 1.0;\n  vec4 sh = -step(h, vec4(0.0));\n\n  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;\n  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;\n\n  vec3 p0 = vec3(a0.xy,h.x);\n  vec3 p1 = vec3(a0.zw,h.y);\n  vec3 p2 = vec3(a1.xy,h.z);\n  vec3 p3 = vec3(a1.zw,h.w);\n\n//Normalise gradients\n  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));\n  p0 *= norm.x;\n  p1 *= norm.y;\n  p2 *= norm.z;\n  p3 *= norm.w;\n\n// Mix final noise value\n  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);\n  m = m * m;\n  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), \n                                dot(p2,x2), dot(p3,x3) ) );\n}\n\nmat4 rotationMatrix(vec3 axis, float angle)\n{\n    axis = normalize(axis);\n    float s = sin(angle);\n    float c = cos(angle);\n    float oc = 1.0 - c;\n    \n    return mat4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,\n                oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,\n                oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,\n                0.0,                                0.0,                                0.0,                                1.0);\n}\n\nvoid main()\n{\n    fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation\n    mat3 invTranspose = mat3(u_ModelInvTr);\n    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);          \n\n    //initial pos\n    float x = vs_Pos.x ;\n    float y = vs_Pos.y ;\n    float z = vs_Pos.z ;\n    float w = vs_Pos.w;\n\n    float x2 = x;\n    float y2 = y;\n    float z2 = z;\n\n    //noise\n        vec3 uv = vec3(x, y, z) * vec3(sin(u_Time * 0.01) + 2.0);\n        float noise1 = snoise(uv);\n        vec3 uv2 = vec3(snoise(uv), snoise(uv), snoise(uv));\n        float noise2 = snoise(uv2);\n        vec4 change = vec4(noise2, noise2, noise2, noise2) * fs_Nor * u_Length;\n\n    if(y > 0.9) {\n        y2 = 0.9 * (1.0 * y + (abs(x) * sqrt((20.0 + abs(x))/10.0)));\n    }\n    else if(y2 < 0.9 && y2 > 0.0) {\n        z2 = z - (1.0 * y);\n    }\n\n    //rotate\n    vec3 axis = vec3(0.0, 1.0, 0.0);\n    float angle = -50.0 * (sin(u_Time * 0.0005));\n    mat4 rotation = rotationMatrix(axis, angle);\n\n    //final\n    vec4 change_Pos = vec4(0.2, 0.2, 0.2, 0.2) * vec4(x2 - 8.0, y2 + 1.0, z2, w);\n    if(change_Pos.y < 0.25 && change_Pos.y > 0.02) {\n        change_Pos -= change * 0.2;\n    }\n\n    //rotate final\n    vec4 rotate_Pos = change_Pos * rotation;\n    change_Pos = rotate_Pos;\n\n    vec4 modelposition = u_Model * change_Pos;   // Temporarily store the transformed vertex positions for use below\n\n    fs_LightVec = (rotation * lightPos) - modelposition;  // Compute the direction in which the light source lies\n    fs_Pos = modelposition;\n    gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is\n                                             // used to render the final positions of the geometry's vertices\n}"
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports) {
+
+module.exports = "#version 300 es\n\n// This is a fragment shader. If you've opened this file first, please\n// open and read lambert.vert.glsl before reading on.\n// Unlike the vertex shader, the fragment shader actually does compute\n// the shading of geometry. For every pixel in your program's output\n// screen, the fragment shader is run for every bit of geometry that\n// particular pixel overlaps. By implicitly interpolating the position\n// data passed into the fragment shader by the vertex shader, the fragment shader\n// can compute what color to apply to its pixel based on things like vertex\n// position, light position, and vertex color.\nprecision highp float;\n\nuniform vec4 u_Color; // The color with which to render this instance of geometry.\nuniform float u_Time;\n\n// These are the interpolated values out of the rasterizer, so you can't know\n// their specific values without knowing the vertices that contributed to them\nin vec4 fs_Nor;\nin vec4 fs_LightVec;\nin vec4 fs_Col;\nin vec4 fs_Pos;\n\nout vec4 out_Col; // This is the final output color that you will see on your\n                  // screen for the pixel that is currently being processed.\n\n\nfloat random (in vec2 st) {\n    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);\n}\n\nfloat snoise (in vec2 st) {\n    vec2 i = floor(st);\n    vec2 f = fract(st);\n\n    // Four corners in 2D of a tile\n    float a = random(i);\n    float b = random(i + vec2(1.0, 0.0));\n    float c = random(i + vec2(0.0, 1.0));\n    float d = random(i + vec2(1.0, 1.0));\n\n    vec2 u = f * f * (3.0 - 2.0 * f);\n\n    return mix(a, b, u.x) +\n            (c - a)* u.y * (1.0 - u.x) +\n            (d - b) * u.x * u.y;\n}\n\nfloat fbm (in vec2 st) {\n    // Initial values\n    float value = 0.0;\n    float amplitude = .5;\n    float frequency = 0.;\n\n    // Loop of octaves\n    for (int i = 0; i < 8; i++) {\n        value += amplitude * abs(snoise(st));\n        st *= 2.;\n        amplitude *= .5;\n    }\n    return value;\n}\n\nvoid main()\n{\n    // Material base color (before shading)\n        vec4 diffuseColor = u_Color;\n        // Calculate the diffuse term for Lambert shading\n        float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec) + vec4(sin(u_Time * 0.01)));\n        // Avoid negative lighting values\n        // diffuseTerm = clamp(diffuseTerm, 0, 1);\n\n        float ambientTerm = 0.7;\n\n        float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier\n                                                            //to simulate ambient lighting. This ensures that faces that are not\n                                                            //lit by our point light are not completely black.\n      float fbm = fbm(vec2(fs_Pos.x, fs_Pos.y));\n\n     diffuseColor = vec4(224.0/256.0, 255.0/256.0, 255.0/256.0, 1.0);\n    \n\n    vec4 col = vec4(diffuseColor.rgb * lightIntensity, diffuseColor.a);\n    out_Col = col;\n\n        // Compute final shaded color\n\n\n\n}\n"
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+module.exports = "#version 300 es\n\n//This is a vertex shader. While it is called a \"shader\" due to outdated conventions, this file\n//is used to apply matrix transformations to the arrays of vertex data passed to it.\n//Since this code is run on your GPU, each vertex is transformed simultaneously.\n//If it were run on your CPU, each vertex would have to be processed in a FOR loop, one at a time.\n//This simultaneous transformation allows your program to run much faster, especially when rendering\n//geometry with millions of vertices.\n\nuniform float u_Length;\n\nuniform float u_Time; \n\nuniform mat4 u_Model;       // The matrix that defines the transformation of the\n                            // object we're rendering. In this assignment,\n                            // this will be the result of traversing your scene graph.\n\nuniform mat4 u_ModelInvTr;  // The inverse transpose of the model matrix.\n                            // This allows us to transform the object's normals properly\n                            // if the object has been non-uniformly scaled.\n\nuniform mat4 u_ViewProj;    // The matrix that defines the camera's transformation.\n                            // We've written a static matrix for you to use for HW2,\n                            // but in HW3 you'll have to generate one yourself\n\nin vec4 vs_Pos;             // The array of vertex positions passed to the shader\n\nin vec4 vs_Nor;             // The array of vertex normals passed to the shader\n\nin vec4 vs_Col;             // The array of vertex colors passed to the shader.\n\nout vec4 fs_Nor;            // The array of normals that has been transformed by u_ModelInvTr. This is implicitly passed to the fragment shader.\nout vec4 fs_LightVec;       // The direction in which our virtual light lies, relative to each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Col;            // The color of each vertex. This is implicitly passed to the fragment shader.\nout vec4 fs_Pos;\n\nconst vec4 lightPos = vec4(1.0, 1.0, 1.0, 1.0); //The position of our virtual light, which is used to compute the shading of\n                                        //the geometry in the fragment shader.\n\n//\tSimplex 3D Noise \n//\tby Ian McEwan, Ashima Arts\n//\nvec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}\nvec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}\n\nfloat snoise(vec3 v){ \n  const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;\n  const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);\n\n// First corner\n  vec3 i  = floor(v + dot(v, C.yyy) );\n  vec3 x0 =   v - i + dot(i, C.xxx) ;\n\n// Other corners\n  vec3 g = step(x0.yzx, x0.xyz);\n  vec3 l = 1.0 - g;\n  vec3 i1 = min( g.xyz, l.zxy );\n  vec3 i2 = max( g.xyz, l.zxy );\n\n  //  x0 = x0 - 0. + 0.0 * C \n  vec3 x1 = x0 - i1 + 1.0 * C.xxx;\n  vec3 x2 = x0 - i2 + 2.0 * C.xxx;\n  vec3 x3 = x0 - 1. + 3.0 * C.xxx;\n\n// Permutations\n  i = mod(i, 289.0 ); \n  vec4 p = permute( permute( permute( \n             i.z + vec4(0.0, i1.z, i2.z, 1.0 ))\n           + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) \n           + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));\n\n// Gradients\n// ( N*N points uniformly over a square, mapped onto an octahedron.)\n  float n_ = 1.0/7.0; // N=7\n  vec3  ns = n_ * D.wyz - D.xzx;\n\n  vec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)\n\n  vec4 x_ = floor(j * ns.z);\n  vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)\n\n  vec4 x = x_ *ns.x + ns.yyyy;\n  vec4 y = y_ *ns.x + ns.yyyy;\n  vec4 h = 1.0 - abs(x) - abs(y);\n\n  vec4 b0 = vec4( x.xy, y.xy );\n  vec4 b1 = vec4( x.zw, y.zw );\n\n  vec4 s0 = floor(b0)*2.0 + 1.0;\n  vec4 s1 = floor(b1)*2.0 + 1.0;\n  vec4 sh = -step(h, vec4(0.0));\n\n  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;\n  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;\n\n  vec3 p0 = vec3(a0.xy,h.x);\n  vec3 p1 = vec3(a0.zw,h.y);\n  vec3 p2 = vec3(a1.xy,h.z);\n  vec3 p3 = vec3(a1.zw,h.w);\n\n//Normalise gradients\n  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));\n  p0 *= norm.x;\n  p1 *= norm.y;\n  p2 *= norm.z;\n  p3 *= norm.w;\n\n// Mix final noise value\n  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);\n  m = m * m;\n  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), \n                                dot(p2,x2), dot(p3,x3) ) );\n}\n\nmat4 rotationMatrix(vec3 axis, float angle)\n{\n    axis = normalize(axis);\n    float s = sin(angle);\n    float c = cos(angle);\n    float oc = 1.0 - c;\n    \n    return mat4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,\n                oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,\n                oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,\n                0.0,                                0.0,                                0.0,                                1.0);\n}\n\nvoid main()\n{\n    fs_Col = vs_Col;                         // Pass the vertex colors to the fragment shader for interpolation\n    mat3 invTranspose = mat3(u_ModelInvTr);\n    fs_Nor = vec4(invTranspose * vec3(vs_Nor), 0);          \n\n    //initial pos\n    float x = vs_Pos.x ;\n    float y = vs_Pos.y ;\n    float z = vs_Pos.z ;\n    float w = vs_Pos.w;\n\n    float x2 = x;\n    float y2 = y;\n    float z2 = z;\n\n    //noise\n        vec3 uv = vec3(x, y, z) * vec3(sin(u_Time * 0.01) + 2.0);\n        float noise1 = snoise(uv);\n        vec3 uv2 = vec3(snoise(uv), snoise(uv), snoise(uv));\n        float noise2 = snoise(uv2);\n        vec4 change = vec4(noise2, noise2, noise2, noise2) * fs_Nor * u_Length;\n\n    if(y > 0.9) {\n        y2 = 0.9 * (1.0 * y + (abs(x) * sqrt((20.0 + abs(x))/10.0)));\n    }\n    else if(y2 < 0.9 && y2 > 0.0) {\n        z2 = z - (1.0 * y);\n    }\n\n    //rotate\n    vec3 axis = vec3(0.0, 1.0, 0.0);\n    float angle = 50.0 * (sin(u_Time *0.0001));\n    mat4 rotation = rotationMatrix(axis, angle);\n\n    //final\n    vec4 change_Pos = vec4(0.2, 0.2, 0.2, 0.2) * vec4(x2 + 12.0, y2 + 1.0, z2, w);\n    if(change_Pos.y < 0.25 && change_Pos.y > 0.02) {\n        change_Pos -= change * 0.2;\n    }\n\n    //rotate final\n    vec4 rotate_Pos = change_Pos * rotation;\n    change_Pos = rotate_Pos;\n\n    vec4 modelposition = u_Model * change_Pos;   // Temporarily store the transformed vertex positions for use below\n\n    fs_LightVec = lightPos - modelposition;  // Compute the direction in which the light source lies\n    fs_Pos = modelposition;\n    gl_Position = u_ViewProj * modelposition;// gl_Position is a built-in variable of OpenGL which is\n                                             // used to render the final positions of the geometry's vertices\n}"
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports) {
+
+module.exports = "#version 300 es\n\n// This is a fragment shader. If you've opened this file first, please\n// open and read lambert.vert.glsl before reading on.\n// Unlike the vertex shader, the fragment shader actually does compute\n// the shading of geometry. For every pixel in your program's output\n// screen, the fragment shader is run for every bit of geometry that\n// particular pixel overlaps. By implicitly interpolating the position\n// data passed into the fragment shader by the vertex shader, the fragment shader\n// can compute what color to apply to its pixel based on things like vertex\n// position, light position, and vertex color.\nprecision highp float;\n\nuniform vec4 u_Color; // The color with which to render this instance of geometry.\nuniform float u_Time;\n\n// These are the interpolated values out of the rasterizer, so you can't know\n// their specific values without knowing the vertices that contributed to them\nin vec4 fs_Nor;\nin vec4 fs_LightVec;\nin vec4 fs_Col;\nin vec4 fs_Pos;\n\nout vec4 out_Col; // This is the final output color that you will see on your\n                  // screen for the pixel that is currently being processed.\n\n\nfloat random (in vec2 st) {\n    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);\n}\n\nfloat snoise (in vec2 st) {\n    vec2 i = floor(st);\n    vec2 f = fract(st);\n\n    // Four corners in 2D of a tile\n    float a = random(i);\n    float b = random(i + vec2(1.0, 0.0));\n    float c = random(i + vec2(0.0, 1.0));\n    float d = random(i + vec2(1.0, 1.0));\n\n    vec2 u = f * f * (3.0 - 2.0 * f);\n\n    return mix(a, b, u.x) +\n            (c - a)* u.y * (1.0 - u.x) +\n            (d - b) * u.x * u.y;\n}\n\nfloat fbm (in vec2 st) {\n    // Initial values\n    float value = 0.0;\n    float amplitude = .5;\n    float frequency = 0.;\n\n    // Loop of octaves\n    for (int i = 0; i < 8; i++) {\n        value += amplitude * abs(snoise(st));\n        st *= 2.;\n        amplitude *= .5;\n    }\n    return value;\n}\n\nvoid main()\n{\n    // Material base color (before shading)\n        vec4 diffuseColor = u_Color;\n        // Calculate the diffuse term for Lambert shading\n        float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec) + vec4(sin(u_Time * 0.01)));\n        // Avoid negative lighting values\n        // diffuseTerm = clamp(diffuseTerm, 0, 1);\n\n        float ambientTerm = 0.7;\n\n        float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier\n                                                            //to simulate ambient lighting. This ensures that faces that are not\n                                                            //lit by our point light are not completely black.\n    float fbm = fbm(vec2(fs_Pos.x, fs_Pos.y));\n\n    diffuseColor = vec4(255.0/256.0, 182.0/256.0, 193.0/256.0, 1.0);\n\n    vec4 col = vec4(diffuseColor.rgb * 1.2 * lightIntensity, diffuseColor.a);\n\n    out_Col = col;\n\n        // Compute final shaded color\n\n\n\n}\n"
 
 /***/ })
 /******/ ]);
