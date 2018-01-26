@@ -28,7 +28,7 @@ Mountains
 
 Planet 
   -Heart shaped planet created with parabolic curves
-  -Fragment shaded with Toon Shader creating a pulsing core
+  -Fragment shaded with Toon Shader creating a pulsing core that looks like a lava lamp
 
 Bunnies
   -Shaped with parabolic curves
